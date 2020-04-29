@@ -16,7 +16,7 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logout(){
+  logout() {
     this.keycloak.logout();
   }
 
@@ -24,7 +24,7 @@ export class NavigationComponent implements OnInit {
     try {
       this.keycloak.getUsername();
       return true;
-    }catch (e) {
+    } catch (e) {
       return false;
     }
   }
