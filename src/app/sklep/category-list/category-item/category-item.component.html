@@ -1,0 +1,13 @@
+<a
+  [routerLink]="['/','category',category.id,'products']"
+  class="list-group-item-heading"
+  routerLinkActive="active"
+  style="cursor: pointer;"
+>
+  <h5
+    (click)="onSelectCategory()"
+    [textContent]="category.name.toUpperCase()">
+    Category
+  </h5>
+  <hr>
+</a>

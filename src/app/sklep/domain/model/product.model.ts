@@ -1,7 +1,9 @@
 export class Product {
 
   constructor(
-    public subcategoryId: string,
+    public id: number,
+    public subcategoryId: number,
+    public description: string,
     public discount: number,
     public expirationTimestamp: string,
     public imageUrl: string,
