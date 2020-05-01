@@ -5,9 +5,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavigationComponent} from './sklep/navigation/navigation.component';
 import {FormsModule} from '@angular/forms';
-import {initializer} from './app-init';
 import {KeycloakAngularModule, KeycloakService} from 'keycloak-angular';
 import {SklepModule} from './sklep/sklep.module';
+import {DataService} from './sklep/service/data.service';
+import {initializer} from './app-init';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,11 @@ import {SklepModule} from './sklep/sklep.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    KeycloakAngularModule,
+    KeycloakAngularModule
   ],
   providers: [
-    {
+    DataService,
+    { // comment this section \/ in case keycloak server is down
       provide: APP_INITIALIZER,
       useFactory: initializer,
       multi: true,

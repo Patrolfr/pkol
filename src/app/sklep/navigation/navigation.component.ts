@@ -21,6 +21,7 @@ export class NavigationComponent implements OnInit {
   }
 
   isUserLoggedIn(): boolean {
+    // return true; // uncomment in case keycloak server is down
     try {
       this.keycloak.getUsername();
       return true;
