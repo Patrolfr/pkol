@@ -19,6 +19,7 @@ export class DataService {
   private mockDesription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   private productsTvs: Product[] = [
+    new Product(0, 1, this.mockDesription, 11, '2020-01-02', this.mockImage1, false, 'Projector 4k fhd qa', 4555, 199),
     new Product(1, 1, this.mockDesription, 11, '2020-01-02', this.mockImage1, false, 'Ed, Edd & Eddie TV1', 4555, 199),
     new Product(2, 1, this.mockDesription, 12, '2020-01-03', this.mockImage1, false, 'Super ED TV2', 5444, 99),
     new Product(3, 1, this.mockDesription, 14, '2020-01-05', this.mockImage1, false, 'Super OLED TV4', 7222, 12),
@@ -38,14 +39,10 @@ export class DataService {
   }
 
   public getProductsByCategoryId(categoryId: number): Product[] {
-    console.log(this.categories[1].name);
-    if (categoryId === 1) {
+    if (categoryId % 2) {
       return this.productsTvs;
     }
-    if (categoryId === 2) {
-      return this.towels;
-    }
-    return this.productsTvs;
+    return this.towels;
   }
 
   public getProductById(productId: number): Product {

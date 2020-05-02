@@ -3,5 +3,5 @@
   Category: {{this.category.parentCategory != null ? this.category.parentCategory.name + ' -> ' : ''}} {{this.category.name}}</h4>
 <hr>
 <app-product-list
-  [products]="this.productsOfCategory">
+  [productsChanged]="productsChanged">
 </app-product-list>
