@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {KeycloakService} from "keycloak-angular";
-import {Observable} from "rxjs";
-import {CanAuthenticationGuard} from "../guard/can-authentication-guard";
+import {Component, OnInit} from '@angular/core';
+import {KeycloakService} from 'keycloak-angular';
 
 @Component({
   selector: 'app-navigation',
@@ -18,17 +16,17 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logout(){
+  logout() {
     this.keycloak.logout();
   }
 
   isUserLoggedIn(): boolean {
+    // return true; // uncomment in case keycloak server is down
     try {
-      this.keycloak.getUsername()
-      return true
-
-    }catch (e) {
-      return false
+      this.keycloak.getUsername();
+      return true;
+    } catch (e) {
+      return false;
     }
   }
 }

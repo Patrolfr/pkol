@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <img
+      [src]="product.imageUrl"
+      alt="{{ product.name }}"
+      class="img-responsive"
+      style="max-height: 400px"
+    >
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1 [textContent]="product.name">Product Name</h1>
+  </div>
+</div>
+<div class="row">
+  <div [textContent]="product.description" class="col-xs-12">
+    Desc...
+  </div>
+</div>
