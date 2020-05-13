@@ -8,11 +8,15 @@ import {FormsModule} from '@angular/forms';
 import {KeycloakAngularModule} from 'keycloak-angular';
 import {SklepModule} from './sklep/sklep.module';
 import {DataService} from './sklep/service/data.service';
+import { FooterComponent } from './sklep/footer/footer.component';
+import { BrandZoneComponent } from './sklep/brand-zone/brand-zone.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent
+    NavigationComponent,
+    FooterComponent,
+    BrandZoneComponent
   ],
   imports: [
     SklepModule,
