@@ -1,0 +1,28 @@
+<h2>Bucket: </h2>
+<hr>
+<div class="row">
+  <!--  todo make it another compoenet -->
+  <div *ngFor="let entry of bucketEntries | async;">
+    <div class="row">
+      <div class="col-xl-9">
+        <a
+          [routerLink]="['/', 'product', entry.product.id]"
+          class="list-group-item clearfix"
+          routerLinkActive="active"
+          style="cursor: pointer;">
+          <h4 [textContent]="entry.product.name" class="list-group-item-heading">Product name</h4>
+        </a>
+        <p [textContent]="entry.product.description.substr(0,150)" class="list-group-item-text">Description</p>
+      </div>
+      <div class="col-xl-3">
+        <img [src]="entry.product.image" alt="{{entry.product.name}}" class="img-responsive" style="max-height: 200px">
+      </div>
+    </div>
+    <h5>Price: {{entry.product.price}}</h5>
+    <h5>Amount: {{entry.amount}}</h5>
+    <h5>Sum: {{entry.getTotalPrice()}}</h5>
+    <button (click)="onRemoveProduct(entry.product.id)" class="btn btn-danger">Remove from bucket</button>
+    <hr>
+  </div>
+</div>
+<h4>Total cost: {{(totalCostInPln)}}</h4>

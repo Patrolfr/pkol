@@ -7,7 +7,9 @@ import {NavigationComponent} from './sklep/navigation/navigation.component';
 import {FormsModule} from '@angular/forms';
 import {KeycloakAngularModule} from 'keycloak-angular';
 import {SklepModule} from './sklep/sklep.module';
-import {DataService} from './sklep/service/data.service';
+import {StoreModule} from '@ngrx/store';
+import {bucketReducer} from './sklep/ngRx-store/user-bucket.reducers';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,16 +21,12 @@ import {DataService} from './sklep/service/data.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    HttpClientModule,
+    StoreModule.forRoot({bucketState: bucketReducer})
   ],
   providers: [
-    DataService
-    // ,{ // comment this section \/ in case keycloak server is down
-    //   provide: APP_INITIALIZER,
-    //   useFactory: initializer,
-    //   multi: true,
-    //   deps: [KeycloakService]
-    // }
+    // ,{ provide: APP_INITIALIZER, useFactory: initializer, multi: true, deps: [KeycloakService]}
   ],
   bootstrap: [AppComponent]
 })

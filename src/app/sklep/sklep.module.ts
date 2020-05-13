@@ -1,6 +1,6 @@
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SklepRoutingModule} from './sklep-routing,module';
+import {SklepRoutingModule} from './sklep-routing.module';
 import {ProtectedComponent} from './protected/protected.component';
 import {StartComponent} from './start/start.component';
 import {CategoryListComponent} from './category-list/category-list.component';
@@ -10,7 +10,12 @@ import {ProductItemComponent} from './products/product-item/product-item.compone
 import {ProductsByCategoryComponent} from './products/products-by-category/products-by-category.component';
 import {SklepComponent} from './sklep.component';
 import {ProductDetailsComponent} from './products/product-details/product-details.component';
-
+import {BucketComponent} from './bucket/bucket.component';
+import {DataService} from './service/data.service';
+import {CategoryService} from './service/category.service';
+import {DataMockService} from './service/dataMockService';
+import {initializeCategories, initializeProducts} from '../app-init';
+import {ProductService} from './service/product.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,8 @@ import {ProductDetailsComponent} from './products/product-details/product-detail
     ProductItemComponent,
     ProductsByCategoryComponent,
     SklepComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    BucketComponent
   ],
   exports: [
     SklepComponent
@@ -30,6 +36,15 @@ import {ProductDetailsComponent} from './products/product-details/product-detail
   imports: [
     CommonModule,
     SklepRoutingModule
+  ],
+  providers: [
+    DataService,
+    CategoryService,
+    DataMockService,
+    ProductService,
+    // ,{ provide: APP_INITIALIZER, useFactory: initializer, multi: true, deps: [KeycloakService]}
+    {provide: APP_INITIALIZER, useFactory: initializeCategories, deps: [DataService, CategoryService], multi: true},
+    {provide: APP_INITIALIZER, useFactory: initializeProducts, deps: [DataService, CategoryService], multi: true}
   ]
 })
 export class SklepModule {

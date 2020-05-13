@@ -5,6 +5,7 @@ import {ProtectedComponent} from './protected/protected.component';
 import {StartComponent} from './start/start.component';
 import {ProductsByCategoryComponent} from './products/products-by-category/products-by-category.component';
 import {ProductDetailsComponent} from './products/product-details/product-details.component';
+import {BucketComponent} from './bucket/bucket.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductDetailsComponent
+  },
+  {
+    path: 'bucket',
+    component: BucketComponent
   }
 ];
 

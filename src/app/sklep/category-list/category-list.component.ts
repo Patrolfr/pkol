@@ -1,6 +1,8 @@
-import {Component, Injectable, OnInit} from '@angular/core';
-import {DataService} from '../service/data.service';
+import {Component, Injectable, OnDestroy, OnInit} from '@angular/core';
+import {DataMockService} from '../service/dataMockService';
 import {Category} from '../domain/model/category.model';
+import {Subscription} from 'rxjs';
+import {CategoryService} from '../service/category.service';
 
 @Component({
   selector: 'app-category-list',
@@ -8,15 +10,28 @@ import {Category} from '../domain/model/category.model';
   styleUrls: ['./category-list.component.scss']
 })
 @Injectable()
-export class CategoryListComponent implements OnInit {
+export class CategoryListComponent implements OnInit, OnDestroy {
 
   public categories: Category[];
 
-  constructor(private dataService: DataService) {
+  public subcategories: Category[];
+
+  private subscription: Subscription;
+
+  constructor(private dataServiceMock: DataMockService,
+              private categoryService: CategoryService) {
   }
 
   ngOnInit(): void {
-    this.categories = this.dataService.getCategories();
+    this.categories = this.dataServiceMock.getCategories();
+    this.subcategories = this.categoryService.getAllSubcategories();
+    this.categoryService.subcategoriesChanged.subscribe(newSubcategories => {
+      this.subcategories = newSubcategories;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

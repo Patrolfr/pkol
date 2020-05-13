@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.productsChanged.subscribe((products: Product[]) => {
       this.products = products;
+      console.log(products);
     });
   }
 
