@@ -10,11 +10,15 @@ import {SklepModule} from './sklep/sklep.module';
 import {StoreModule} from '@ngrx/store';
 import {bucketReducer} from './sklep/ngRx-store/user-bucket.reducers';
 import {HttpClientModule} from '@angular/common/http';
+import {FooterComponent} from './sklep/footer/footer.component';
+import {BrandZoneComponent} from './sklep/brand-zone/brand-zone.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent
+    NavigationComponent,
+    FooterComponent,
+    BrandZoneComponent
   ],
   imports: [
     SklepModule,
