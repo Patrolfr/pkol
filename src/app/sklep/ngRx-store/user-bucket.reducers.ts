@@ -13,6 +13,7 @@ export class BucketEntry {
 
 export interface AppState {
   bucketState: BucketState;
+  new
 }
 
 export interface BucketState {
@@ -26,7 +27,7 @@ const initialState: BucketState = {
   entries: [],
   productsIn: [],
   productsInIds: [],
-  totalCostInPln: 1231
+  totalCostInPln: 0
 };
 
 export function bucketReducer(state: BucketState = initialState, action: BucketActions) {

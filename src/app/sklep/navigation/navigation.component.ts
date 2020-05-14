@@ -8,6 +8,8 @@ import {KeycloakService} from 'keycloak-angular';
 })
 export class NavigationComponent implements OnInit {
 
+  //obserer<category[]>
+
   constructor(
     private keycloak: KeycloakService,
   ) {
