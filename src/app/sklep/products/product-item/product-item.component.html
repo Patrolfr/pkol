@@ -2,9 +2,9 @@
   <div class="card">
     <a [routerLink]="['/', 'product', product.id]" routerLinkActive="active"><img class="card-img-top" [src]="product.image" alt="{{product.name}}"></a>
     <div class="card-body">
-      <h4 class="card-title">
+      <h5 class="card-title">
         <a class="black-text" [routerLink]="['/', 'product', product.id]"  [textContent]="product.name"></a>
-      </h4>
+      </h5>
       <small class="text-warning">
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
