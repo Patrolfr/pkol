@@ -6,7 +6,7 @@
       </a>
     <div>
 
-      <label for="searchByPartialNameInput">Search by name:</label>
+      <label>Search by name:</label>
       <p-autoComplete
         (completeMethod)="searchByPartialName($event)"
         (onSelect)="navigateToProduct()"
@@ -14,9 +14,7 @@
         [forceSelection]="true"
         [minLength]="2"
         [suggestions]="matchedProducts"
-        field="name"
-        id="searchByPartialNameInput"
-        name="searchByPartialNameInput"></p-autoComplete>
+        field="name"></p-autoComplete>
 
     </div>
     <div class="d-inline-block">
