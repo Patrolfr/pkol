@@ -14,6 +14,7 @@ export class BucketComponent implements OnInit, OnDestroy {
   storeSubscription: Subscription;
 
   totalCostInPln = 0;
+  totalDiscountInPln = 0;
 
   bucketEntries: Observable<BucketEntry[]>;
 
@@ -23,8 +24,11 @@ export class BucketComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.bucketEntries = this.store.select('bucketState', 'entries');
     this.bucketEntries.subscribe(entires => {
+      this.totalCostInPln = 0;
+      this.totalDiscountInPln = 0;
       entires.forEach((it: BucketEntry) => {
         this.totalCostInPln = this.totalCostInPln + it.getTotalPrice();
+        this.totalDiscountInPln = this.totalDiscountInPln + it.getTotalDiscount();
       });
     });
   }

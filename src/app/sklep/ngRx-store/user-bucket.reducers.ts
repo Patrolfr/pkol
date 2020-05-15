@@ -6,14 +6,31 @@ export class BucketEntry {
               public amount: number) {
   }
 
+
+  public hasDiscount(): boolean {
+    return this.product.discount !== 0;
+  }
+
+  public formatInitialCost(): string {
+    return String(this.amount * this.product.price);
+  }
+
+  public formatFinalCost(): string {
+    const finalCost = this.amount * (this.product.price - this.product.discount);
+    return String(finalCost.toFixed(2));
+  }
+
   public getTotalPrice(): number {
     return this.amount * this.product.price;
+  }
+
+  public getTotalDiscount(): number {
+    return this.amount * this.product.discount;
   }
 }
 
 export interface AppState {
   bucketState: BucketState;
-  new
 }
 
 export interface BucketState {

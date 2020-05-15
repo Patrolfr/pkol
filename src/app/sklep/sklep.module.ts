@@ -16,6 +16,7 @@ import {CategoryService} from './service/category.service';
 import {DataMockService} from './service/dataMockService';
 import {initializeCategories, initializeProducts} from '../app-init';
 import {ProductService} from './service/product.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {ProductService} from './service/product.service';
   ],
   imports: [
     CommonModule,
-    SklepRoutingModule
+    SklepRoutingModule,
+    FormsModule
   ],
   providers: [
     DataService,

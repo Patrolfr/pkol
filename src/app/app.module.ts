@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavigationComponent} from './sklep/navigation/navigation.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {KeycloakAngularModule} from 'keycloak-angular';
 import {SklepModule} from './sklep/sklep.module';
 import {StoreModule} from '@ngrx/store';
@@ -25,6 +25,7 @@ import {BrandZoneComponent} from './sklep/brand-zone/brand-zone.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     KeycloakAngularModule,
     HttpClientModule,
     StoreModule.forRoot({bucketState: bucketReducer})
