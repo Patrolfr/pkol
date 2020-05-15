@@ -62,4 +62,20 @@ export class DataService {
     );
   }
 
+
+  getProductByPartialName(partialName: string) {
+    return this.httpClient.get<Product[]>(
+      PRODUCT_URL + '/?search=' + partialName,
+      {
+        observe: 'body',
+        responseType: 'json'
+      });
+
+    //   .toPromise().then(fetchedProducts => {
+    //     // this.productService.setProducts(fetchedProducts);
+    //     console.log('Fetched products by partial name: ' + fetchedProducts);
+    //     console.log(fetchedProducts[0]);
+    //   }
+    // );
+  }
 }

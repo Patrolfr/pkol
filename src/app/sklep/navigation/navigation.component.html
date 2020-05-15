@@ -5,22 +5,19 @@
           Monster
       </a>
     <div>
-      <form class="input-group">
-          <input class="form-control" type="text" placeholder="Czego szukasz...">
-<!--todo fetch it from service-->
-              <select class="form-control" id="gender">
-                  <option>Wszędzie</option>
-                  <option>Laptopy</option>
-                  <option>AGD</option>
-                  <option>Telewziory</option>
-                  <option>RTV</option>
-                  <option>Lodówki</option>
-              </select>
 
-          <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">Szukaj</button>
-          </div>
-      </form>
+      <label for="searchByPartialNameInput">Search by name:</label>
+      <p-autoComplete
+        (completeMethod)="searchByPartialName($event)"
+        (onSelect)="navigateToProduct()"
+        [(ngModel)]="selectedProduct"
+        [forceSelection]="true"
+        [minLength]="2"
+        [suggestions]="matchedProducts"
+        field="name"
+        id="searchByPartialNameInput"
+        name="searchByPartialNameInput"></p-autoComplete>
+
     </div>
     <div class="d-inline-block">
       <a class="text-danger" href="#"><i class="far fa-heart fa-2x mr-3"></i></a>

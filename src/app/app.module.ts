@@ -12,6 +12,8 @@ import {bucketReducer} from './sklep/ngRx-store/user-bucket.reducers';
 import {HttpClientModule} from '@angular/common/http';
 import {FooterComponent} from './sklep/footer/footer.component';
 import {BrandZoneComponent} from './sklep/brand-zone/brand-zone.component';
+import {AutoCompleteModule} from 'primeng';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {BrandZoneComponent} from './sklep/brand-zone/brand-zone.component';
     ReactiveFormsModule,
     KeycloakAngularModule,
     HttpClientModule,
-    StoreModule.forRoot({bucketState: bucketReducer})
+    StoreModule.forRoot({bucketState: bucketReducer}),
+    AutoCompleteModule,
+    BrowserAnimationsModule
   ],
   providers: [
     // ,{ provide: APP_INITIALIZER, useFactory: initializer, multi: true, deps: [KeycloakService]}
