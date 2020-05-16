@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {KeycloakService} from 'keycloak-angular';
 import {NgForm} from '@angular/forms';
 import {DataService} from '../service/data.service';
 import {Product} from '../domain/model/product.model';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../service/authentication.service';
 
 @Component({
   selector: 'app-navigation',
@@ -18,7 +18,7 @@ export class NavigationComponent implements OnInit {
   matchedProducts: Product[];
 
   constructor(
-    private keycloak: KeycloakService,
+    private authenticationService: AuthenticationService,
     private dataService: DataService,
     private router: Router
   ) {
@@ -38,18 +38,8 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['product', this.selectedProduct.id]);
   }
 
-  logout() {
-    this.keycloak.logout();
-  }
-
   isUserLoggedIn(): boolean {
-    // return true; // uncomment in case keycloak server is down
-    try {
-      this.keycloak.getUsername();
-      return true;
-    } catch (e) {
-      return false;
-    }
+    return this.authenticationService.isLogged();
   }
 
 }
