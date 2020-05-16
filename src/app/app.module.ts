@@ -10,6 +10,7 @@ import {SklepModule} from './sklep/sklep.module';
 import {StoreModule} from '@ngrx/store';
 import {bucketReducer} from './sklep/ngRx-store/user-bucket.reducers';
 import {HttpClientModule} from '@angular/common/http';
+import {AuthenticationModule} from './sklep/authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     KeycloakAngularModule,
     HttpClientModule,
+    AuthenticationModule,
     StoreModule.forRoot({bucketState: bucketReducer})
   ],
   providers: [

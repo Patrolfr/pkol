@@ -24,7 +24,7 @@
   <!-- rigth -->
   <div class="nav navbar-nav ml-auto w-100 justify-content-end">
     <a class="nav-link enabled" routerLink="/bucket">Bucket</a>
-    <a *ngIf ="!isUserLoggedIn()" class="nav-link enabled" routerLink="/protected">Login</a>
+    <a *ngIf ="!isUserLoggedIn()" class="nav-link enabled" routerLink="/login">Login</a>
     <a *ngIf ="!isUserLoggedIn()" class="nav-link disabled" href="#">Register</a>
     <a (click)="logout()" *ngIf ="isUserLoggedIn()" class="nav-link enabled" routerLink="/">Logout</a>
   </div>
