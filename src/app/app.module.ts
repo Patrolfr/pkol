@@ -14,6 +14,7 @@ import {FooterComponent} from './sklep/footer/footer.component';
 import {BrandZoneComponent} from './sklep/brand-zone/brand-zone.component';
 import {AutoCompleteModule} from 'primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AuthenticationModule} from './sklep/authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpClientModule,
     StoreModule.forRoot({bucketState: bucketReducer}),
     AutoCompleteModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AuthenticationModule,
+    StoreModule.forRoot({bucketState: bucketReducer})
   ],
   providers: [
     // ,{ provide: APP_INITIALIZER, useFactory: initializer, multi: true, deps: [KeycloakService]}

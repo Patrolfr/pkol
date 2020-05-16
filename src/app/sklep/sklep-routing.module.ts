@@ -6,6 +6,8 @@ import {StartComponent} from './start/start.component';
 import {ProductsByCategoryComponent} from './products/products-by-category/products-by-category.component';
 import {ProductDetailsComponent} from './products/product-details/product-details.component';
 import {BucketComponent} from './bucket/bucket.component';
+import {LoginComponent} from './authentication/login/login.component';
+import {RegistrationComponent} from './authentication/registration/registration.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,14 @@ const routes: Routes = [
   {
     path: 'bucket',
     component: BucketComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegistrationComponent
   }
 ];
 
