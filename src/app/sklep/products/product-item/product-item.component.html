@@ -1,17 +1,22 @@
-<div class="row">
-  <div class="col-xl-9">
-    <a
-      [routerLink]="['/', 'product', product.id]"
-      class="list-group-item clearfix"
-      routerLinkActive="active"
-      style="cursor: pointer;">
-      <h4 [textContent]="product.name" class="list-group-item-heading">Product name</h4>
-    </a>
-    <p [textContent]="product.description.substr(0,150)" class="list-group-item-text">Description</p>
-  </div>
-  <div class="col-xl-3">
-    <img [src]="product.image" alt="{{product.name}}" class="img-responsive" style="max-height: 200px">
+<div class="col-lg-4 col-md-6 mb-4 d-inline-block">
+  <div class="card">
+    <a [routerLink]="['/', 'product', product.id]" routerLinkActive="active"><img class="card-img-top" [src]="product.image" alt="{{product.name}}"></a>
+    <div class="card-body">
+      <h5 class="card-title">
+        <a class="black-text" [routerLink]="['/', 'product', product.id]" [textContent]="product.name"></a>
+      </h5>
+      <small class="text-warning">
+        <i class="fas fa-star" *ngFor="let star of stars"></i>
+      </small>
+      ({{votes}})
+      <h5 class="mt-1 mb-2">{{product.price}} zł</h5>
+      <button
+        class="btn btn-success btn-block"
+        type="button"
+        (click)="addToBucket()"
+      >Dodaj do koszyka!
+      </button>
+    </div>
+
   </div>
 </div>
-<hr>
-
