@@ -17,6 +17,9 @@ import {DataMockService} from './service/dataMockService';
 import {initializeCategories, initializeProducts} from '../app-init';
 import {ProductService} from './service/product.service';
 import {FormsModule} from '@angular/forms';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {JwtInterceptor} from './interceptor/auth.interceptor';
+import {ErrorInterceptor} from './interceptor/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,8 @@ import {FormsModule} from '@angular/forms';
     DataMockService,
     ProductService,
     // ,{ provide: APP_INITIALIZER, useFactory: initializer, multi: true, deps: [KeycloakService]}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: APP_INITIALIZER, useFactory: initializeCategories, deps: [DataService, CategoryService], multi: true},
     {provide: APP_INITIALIZER, useFactory: initializeProducts, deps: [DataService, CategoryService], multi: true}
   ]
