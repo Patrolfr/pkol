@@ -39,4 +39,13 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
+
+
+  isLogged() {
+    if (localStorage.getItem('currentUser')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
