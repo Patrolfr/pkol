@@ -3,23 +3,20 @@
     <a [routerLink]="['/', 'product', product.id]" routerLinkActive="active"><img class="card-img-top" [src]="product.image" alt="{{product.name}}"></a>
     <div class="card-body">
       <h5 class="card-title">
-        <a class="black-text" [routerLink]="['/', 'product', product.id]"  [textContent]="product.name"></a>
+        <a class="black-text" [routerLink]="['/', 'product', product.id]" [textContent]="product.name"></a>
       </h5>
       <small class="text-warning">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>   
+        <i class="fas fa-star" *ngFor="let star of stars"></i>
       </small>
-      (46)
+      ({{votes}})
       <h5 class="mt-1 mb-2">{{product.price}} zł</h5>
-      <button class="btn btn-success btn-block" type="button">Dodaj do koszyka!</button>      
+      <button
+        class="btn btn-success btn-block"
+        type="button"
+        (click)="addToBucket()"
+      >Dodaj do koszyka!
+      </button>
     </div>
 
   </div>
 </div>
-<!--<p class="card-text" [textContent]="product.description.substr(0,100)+'...'"></p>-->
-<!--    <div class="card-footer">
-      <button class="btn btn-success btn-block" type="button">Dodaj do koszyka!</button>
-    </div>-->
