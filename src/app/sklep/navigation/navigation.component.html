@@ -1,29 +1,38 @@
 <nav class="navbar navbar-light bg-light fixed-top">
-  <div class="container">
-      <a class="navbar-brand" href="#">
+  <div class="container" style="padding: 0">
+
+      <div class="col-2" style="padding: 0">
+        <a class="navbar-brand" href="#">
           <i class="fab fa-optin-monster fa-3x text-success"></i>
           Monster
-      </a>
-    <div>
+        </a>
+      </div>
 
-      <label>Search by name:</label>
-      <p-autoComplete
-        (completeMethod)="searchByPartialName($event)"
-        (onSelect)="navigateToProduct()"
-        [(ngModel)]="selectedProduct"
-        [forceSelection]="true"
-        [minLength]="2"
-        [suggestions]="matchedProducts"
-        field="name"></p-autoComplete>
+      <div class="col-4" style="padding: 0">
+        <label style="display: inline">Search by name:</label>
+        <p-autoComplete style="display: inline"
+          (completeMethod)="searchByPartialName($event)"
+          (onSelect)="navigateToProduct()"
+          [(ngModel)]="selectedProduct"
+          [forceSelection]="true"
+          [minLength]="2"
+          [suggestions]="matchedProducts"
+          field="name"></p-autoComplete>
+      </div>
 
-    </div>
+      <!-- right -->
+      <div class="col-3 d-inline-block">
+        <a *ngIf="isUserLoggedIn()" class="text-danger" href="#"><i class="far fa-heart fa-2x mr-3"></i></a>
+        <a *ngIf="isUserLoggedIn()" class="text-success" routerLink="/bucket" href="#"><i
+          class="fas fa-shopping-basket fa-2x mr-3"></i></a>
+        <a *ngIf="isUserLoggedIn()" class="text-dark" href="#"><i class="far fa-user fa-2x"></i></a>
+      </div>
 
-    <!-- rigth -->
-    <div class="d-inline-block">
-      <a *ngIf ="!isUserLoggedIn()" class="nav-link enabled" routerLink="/login">Login</a>
-      <a class="text-danger" href="#"><i class="far fa-heart fa-2x mr-3"></i></a>
-      <a class="text-success" routerLink="/bucket" href="#"><i class="fas fa-shopping-basket fa-2x mr-3"></i></a>
-      <a class="text-dark" href="#"><i class="far fa-user fa-2x"></i></a>
-    </div>
+      <div class="col-2 d-inline-block">
+        <a style="display: inline" *ngIf="!isUserLoggedIn()" class="text-dark nav-link enabled" routerLink="/login">Login</a>
+        <a style="display: inline" *ngIf="!isUserLoggedIn()" class="text-dark nav-link enabled" routerLink="/register">Register</a>
+        <a style="display: inline" *ngIf="isUserLoggedIn()" class="text-dark nav-link enabled" (click)="logOut()" >Logout</a>
+      </div>
+
   </div>
 </nav>

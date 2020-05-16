@@ -42,4 +42,7 @@ export class NavigationComponent implements OnInit {
     return this.authenticationService.isLogged();
   }
 
+  logOut() {
+    return this.authenticationService.logout();
+  }
 }
