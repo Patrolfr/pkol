@@ -42,7 +42,7 @@
 
     <div class="col-xs-7">
       <button
-        [disabled]="productsAmountForm.invalid"
+        [disabled]="productsAmountForm.invalid || !canAddToBucket()"
         class="btn btn-success"
         type="submit">Add to bucket
       </button>

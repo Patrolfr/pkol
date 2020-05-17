@@ -34,7 +34,9 @@
       <div class="col-2 d-inline-block">
         <a style="display: inline" *ngIf="!isUserLoggedIn()" class="text-dark nav-link enabled" routerLink="/login">Login</a>
         <a style="display: inline" *ngIf="!isUserLoggedIn()" class="text-dark nav-link enabled" routerLink="/register">Register</a>
-        <a style="display: inline" *ngIf="isUserLoggedIn()" class="text-dark nav-link enabled" (click)="logOut()" >Logout</a>
+        <a style="display: inline" *ngIf="isUserLoggedIn()" class="text-dark nav-link enabled"
+           routerLink="/" (click)="logOut()" >Logout
+        </a>
       </div>
 
   </div>

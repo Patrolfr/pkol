@@ -1,11 +1,11 @@
 import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../domain/model/product.model';
-import {DataMockService} from '../../service/dataMockService';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ProductService} from '../../service/product.service';
 import {Store} from '@ngrx/store';
 import {AddProduct} from '../../ngRx-store/bucket.actions';
 import {NgForm} from '@angular/forms';
+import {AuthenticationService} from '../../service/authentication.service';
 
 @Component({
   selector: 'app-product-details',
@@ -19,7 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   public product: Product;
 
   constructor(private route: ActivatedRoute,
-              private dataService: DataMockService,
+              private authenticationService: AuthenticationService,
               private productService: ProductService,
               private store: Store) {
   }
@@ -40,6 +40,10 @@ export class ProductDetailsComponent implements OnInit {
     this.store.dispatch(new AddProduct(
       {amount: amountOfProducts, product: this.product})
     );
+  }
+
+  canAddToBucket(): boolean {
+    return this.authenticationService.isLogged();
   }
 
 }
