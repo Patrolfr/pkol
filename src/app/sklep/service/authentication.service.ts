@@ -4,7 +4,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User} from '../models/user';
 
-export const SERVER_URL = 'http://137.135.245.109:8000/api/token/';
+export const LOGIN_URL = 'http://137.135.245.109:8000/api/token/';
+export const REGISTRATION_URL = 'http://137.135.245.109:8000/users/user/';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -21,7 +22,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>(SERVER_URL, { username, password })
+    return this.http.post<any>(LOGIN_URL, { username, password })
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.access) {
@@ -41,12 +42,13 @@ export class AuthenticationService {
     window.location.reload();
   }
 
-
   isLogged() {
-    if (localStorage.getItem('currentUser')) {
-      return true;
-    } else {
-      return false;
-    }
+    return !!localStorage.getItem('currentUser');
   }
+
+
+  register(user: User) {
+    return this.http.post(REGISTRATION_URL, user);
+  }
+
 }
