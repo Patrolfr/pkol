@@ -3,18 +3,19 @@
     <div class="card-body">
         <h3 class="card-title"> 
           {{ product.name }}
+          <h5>
+          <small class="text-warning mb-2">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </small>
+          ({{ 40 }})
+        </h5> 
         </h3>
-
       <h4>{{product.price}} PLN</h4>
       <p class="card-text" [textContent]="product.description"></p>
-      <small class="text-warning">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-      </small>
-      ({{ 40 }})
     </div>
     <div class="card-footer">
       <button
