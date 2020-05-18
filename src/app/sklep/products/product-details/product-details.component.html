@@ -1,52 +1,44 @@
-<div class="row">
-  <div class="col-md-12">
-    <img
-      [src]="product.image"
-      alt="{{ product.name }}"
-      class="img-responsive"
-      style="max-height: 400px"
-    >
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <h1 [textContent]="product.name">Product Name</h1>
-  </div>
-</div>
-<div class="row asd">
-  <div class="text-info asd">Price: {{product.price}} PLN</div>
-  <div class="text-info asd">Discount: {{product.discount}} PLN</div>
-  <div class="text-info asd">On stock: {{product.items_left}} </div>
-  <div class="text-info asd">Expires on: {{product.expiration_timestamp}}</div>
-</div>
-<div class="row">
-  <div [textContent]="product.description" class="col-xs-12">
-    Desc...
-  </div>
-</div>
+  <div class="card">
+    <img class="card-img-top img-fluid" [src]="product.image" alt="{{ product.name }}">
+    <div class="card-body">
+        <h3 class="card-title"> 
+          {{ product.name }}
+        </h3>
 
-<div class="row">
-  <form #productsAmountForm="ngForm" (ngSubmit)="onSubmitItem()">
-    <div class="col-xs-5">
-      <label for="amount">Amount</label>
-      <input
-        class="form-control"
-        id="amount"
-        name="amount"
-        ngModel
-        type="number"
-        required
-        pattern="^[1-9]+[0-9]*$"
-      >
+      <h4>{{product.price}} PLN</h4>
+      <p class="card-text" [textContent]="product.description"></p>
+      <small class="text-warning">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </small>
+      ({{ 40 }})
     </div>
-
-    <div class="col-xs-7">
+    <div class="card-footer">
       <button
-        [disabled]="productsAmountForm.invalid || !canAddToBucket()"
-        class="btn btn-success"
-        type="submit">Add to bucket
-      </button>
+      [disabled]="productsAmountForm.invalid || !canAddToBucket()"
+      class="btn btn-success btn-block btn-lg"
+      type="submit">Dodaj do koszyka!</button>
     </div>
-  </form>
-</div>
+  </div>
 
+
+  <div class="card card-outline-secondary my-4">
+    <div class="card-header">
+      Recenzje
+    </div>
+    <div class="card-body">
+      <p>Jestem super zadowolna</p>
+      <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
+      <hr>
+      <p>Jestem super zadowolna </p>
+      <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
+      <hr>
+      <p>Jestem super zadowolna </p>
+      <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
+      <hr>
+      <a href="#" class="btn btn-dark">Napisz recenzje</a>
+    </div>
+  </div>
