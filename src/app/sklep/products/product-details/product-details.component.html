@@ -1,45 +1,69 @@
-  <div class="card">
-    <img class="card-img-top img-fluid" [src]="product.image" alt="{{ product.name }}">
-    <div class="card-body">
-        <h3 class="card-title"> 
-          {{ product.name }}
-          <h5>
-          <small class="text-warning mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </small>
-          ({{ 40 }})
-        </h5> 
-        </h3>
-      <h4>{{product.price}} PLN</h4>
-      <p class="card-text" [textContent]="product.description"></p>
-    </div>
-    <div class="card-footer">
-      <button
-      [disabled]="productsAmountForm.invalid || !canAddToBucket()"
-      class="btn btn-success btn-block btn-lg"
-      type="submit">Dodaj do koszyka!</button>
-    </div>
+<div class="card">
+  <img [src]="product.image" alt="{{ product.name }}" class="card-img-top img-fluid">
+  <div class="card-body">
+    <h3 class="card-title">
+      {{ product.name }}
+      <h5>
+        <small class="text-warning mb-2">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </small>
+        ({{ 40 }})
+      </h5>
+    </h3>
+    <h4>{{product.price}} PLN</h4>
+    <div class="text-info asd">Discount: {{product.discount}} PLN</div>
+    <div class="text-info asd">On stock: {{product.items_left}} </div>
+    <div class="text-info asd">Expires on: {{product.expiration_timestamp}}</div>
+    <p [textContent]="product.description" class="card-text"></p>
   </div>
+  <div class="card-footer">
+    <form #productsAmountForm="ngForm" (ngSubmit)="onSubmitItem()">
+      <div class="row">
+        <div class="col-xs-3">
+          <label for="amount">Amount</label>
+        </div>
+        <div class="col-xs-2" style="margin: 10px">
+          <input
+            class="form-control"
+            id="amount"
+            name="amount"
+            ngModel
+            pattern="^[1-9]+[0-9]*$"
+            required
+            type="number"
+          >
+        </div>
 
-
-  <div class="card card-outline-secondary my-4">
-    <div class="card-header">
-      Recenzje
-    </div>
-    <div class="card-body">
-      <p>Jestem super zadowolna</p>
-      <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
-      <hr>
-      <p>Jestem super zadowolna </p>
-      <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
-      <hr>
-      <p>Jestem super zadowolna </p>
-      <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
-      <hr>
-      <a href="#" class="btn btn-dark">Napisz recenzje</a>
-    </div>
+        <div class="col-xs-7">
+          <button
+            [disabled]="productsAmountForm.invalid || !canAddToBucket()"
+            class="btn btn-success btn-block btn-lg"
+            type="submit">Dodaj do koszyka!
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
+</div>
+
+<div class="card card-outline-secondary my-4">
+  <div class="card-header">
+    Recenzje
+  </div>
+  <div class="card-body">
+    <p>Jestem super zadowolna</p>
+    <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
+    <hr>
+    <p>Jestem super zadowolna </p>
+    <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
+    <hr>
+    <p>Jestem super zadowolna </p>
+    <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
+    <hr>
+    <a class="btn btn-dark" href="#">Napisz recenzje</a>
+  </div>
+</div>
