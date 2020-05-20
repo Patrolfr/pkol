@@ -4,6 +4,9 @@ import {Product} from '../domain/model/product.model';
 
 export class ProductService {
 
+  constructor() {
+  }
+
   private allProducts: Product[] = [];
 
   productsChanged = new Subject<Product[]>();
@@ -26,5 +29,8 @@ export class ProductService {
     this.allProducts = newProducts;
     this.productsChanged.next(this.allProducts);
   }
+
+
+
 
 }

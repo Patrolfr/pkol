@@ -50,20 +50,57 @@
   </div>
 </div>
 
-<div class="card card-outline-secondary my-4">
-  <div class="card-header">
-    Recenzje
+<div *ngIf="authenticationService.isLogged()">
+  <div class="row">
+    <h3>Add a review:</h3>
   </div>
-  <div class="card-body">
-    <p>Jestem super zadowolna</p>
-    <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
-    <hr>
-    <p>Jestem super zadowolna </p>
-    <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
-    <hr>
-    <p>Jestem super zadowolna </p>
-    <small class="text-muted">Opublikowano przez Malgorzata13 dnia 6/2/19</small>
-    <hr>
-    <a class="btn btn-dark" href="#">Napisz recenzje</a>
+  <div class="row">
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmitReview()">
+      <div class="form-row">
+        <label>Rating</label>
+        <select formControlName="rating" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.rating.errors }">
+          <option [ngValue]=""></option>
+          <option [ngValue]="0">0</option>
+          <option [ngValue]="1">1</option>
+          <option [ngValue]="2">2</option>
+          <option [ngValue]="4">4</option>
+          <option [ngValue]="5">5</option>
+        </select>
+        <div *ngIf="submitted && f.rating.errors" class="invalid-feedback">
+          <div *ngIf="f.rating.errors.required">Rating field is required</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>Comment</label>
+        <input type="text" formControlName="comment" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.comment.errors }">
+        <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
+          <div *ngIf="f.comment.errors.required">Comment field is required</div>
+        </div>
+      </div>
+      <div class="submit">
+        <button class="btn btn-primary mr-1">Submit</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+<div class="row">
+  <h3>Reviews:</h3>
+</div>
+
+<div *ngFor="let review of reviews" class="reviews">
+  <div style="border-style: solid">
+    <div class="row" style="border-bottom-style: dashed ;margin: 0">
+      <h5>User: {{review.username}} => Rating: {{review.rating}}</h5>
+    </div>
+    <div class="row" style="margin: 0">
+      <p>Review: {{review.comment}}</p>
+    </div>
   </div>
 </div>
+
+
