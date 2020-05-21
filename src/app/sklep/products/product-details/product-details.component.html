@@ -14,21 +14,25 @@
         ({{ 40 }})
       </h5>
     </h3>
-    <h4>{{product.price}} PLN</h4>
-    <div class="text-info asd">Discount: {{product.discount}} PLN</div>
-    <div class="text-info asd">On stock: {{product.items_left}} </div>
-    <div class="text-info asd">Expires on: {{product.expiration_timestamp}}</div>
+    <h4 class="mb-2">
+      {{product.price}} PLN
+    </h4>
+    <h5>
+      <p class="my-1">Zniżka: {{product.discount}} PLN</p>
+      <p class="my-1">Na magazynie: {{product.items_left}} sztuk</p>
+      <p class="my-1">Oferta ważna do: {{product.expiration_timestamp}}</p> 
+    </h5>
     <p [textContent]="product.description" class="card-text"></p>
   </div>
   <div class="card-footer">
     <form #productsAmountForm="ngForm" (ngSubmit)="onSubmitItem()">
-      <div class="row">
-        <div class="col-xs-3">
-          <label for="amount">Amount</label>
-        </div>
-        <div class="col-xs-2" style="margin: 10px">
+      <div class="d-flex">
+        
+          <label for="amount" class="form-control" style="width: 80px;">Sztuk</label>
+                
           <input
-            class="form-control"
+            style="width: 80px;"
+            class="form-control mx-2"
             id="amount"
             name="amount"
             ngModel
@@ -36,15 +40,14 @@
             required
             type="number"
           >
-        </div>
-
-        <div class="col-xs-7">
+               
           <button
             [disabled]="productsAmountForm.invalid || !canAddToBucket()"
-            class="btn btn-success btn-block btn-lg"
+            class="btn btn-success btn-block"
+            style="height: 38px;"
             type="submit">Dodaj do koszyka!
           </button>
-        </div>
+       
       </div>
     </form>
   </div>
@@ -88,7 +91,7 @@
 </div>
 
 
-<div class="row">
+<div class="row mt-2">
   <h3>Reviews:</h3>
 </div>
 
