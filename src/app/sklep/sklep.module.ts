@@ -16,7 +16,7 @@ import {CategoryService} from './service/category.service';
 import {DataMockService} from './service/dataMockService';
 import {initializeCategories, initializeProducts} from '../app-init';
 import {ProductService} from './service/product.service';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {JwtInterceptor} from './interceptor/auth.interceptor';
 import {ErrorInterceptor} from './interceptor/error.interceptor';
@@ -40,7 +40,8 @@ import {ErrorInterceptor} from './interceptor/error.interceptor';
   imports: [
     CommonModule,
     SklepRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     DataService,
