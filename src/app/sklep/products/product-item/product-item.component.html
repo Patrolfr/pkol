@@ -11,7 +11,6 @@
       ({{votes}})
       <h5 class="mt-1 mb-2">{{product.price}} zł</h5>
       <button
-        [disabled]="!canAddToBucket()"
         class="btn btn-success btn-block"
         type="button"
         (click)="addToBucket()"

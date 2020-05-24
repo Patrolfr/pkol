@@ -15,8 +15,6 @@ const GET_REQUEST_OPTIONS = {observe: 'body', responseType: 'json'};
 @Injectable()
 export class DataService {
 
-  private allCategories: Category[] = [];
-
   constructor(private httpClient: HttpClient,
               private categoryService: CategoryService,
               private productService: ProductService) {
@@ -70,12 +68,5 @@ export class DataService {
         observe: 'body',
         responseType: 'json'
       });
-
-    //   .toPromise().then(fetchedProducts => {
-    //     // this.productService.setProducts(fetchedProducts);
-    //     console.log('Fetched products by partial name: ' + fetchedProducts);
-    //     console.log(fetchedProducts[0]);
-    //   }
-    // );
   }
 }

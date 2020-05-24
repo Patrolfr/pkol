@@ -1,0 +1,96 @@
+<button (click)="isLinear = !isLinear" id="toggle-linear" mat-raised-button>
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+<mat-horizontal-stepper #stepper [linear]="isLinear">
+  <mat-step [stepControl]="zeroFormGroup">
+    <ng-template matStepLabel>Summary</ng-template>
+    <div class="row">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let entry of (bucketEntries | async), let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ entry.product.name.slice(0, 28) }}</td>
+          <td>{{ entry.amount }}</td>
+          <td>{{ (entry.amount * (entry.product.price - entry.product.discount)).toFixed(2) }}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Summary</th>
+          <th scope="col">{{ totalAmount | async }}</th>
+          <th scope="col">{{ (totalCostInPln | async).toFixed(2) }}</th>
+        </tr>
+        </tfoot>
+      </table>
+      <h2 *ngIf=" (totalDiscountInPln | async) !== 0">
+        Grats! You are saving {{totalDiscountInPln | async}} PLN today :)
+      </h2>
+    </div>
+    <div>
+      <button mat-button matStepperNext class="btn btn-secondary">Fill out delivery data</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out delivery data</ng-template>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input formControlName="cityCtrl" matInput placeholder="City" required>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Postal Code</mat-label>
+          <input formControlName="postalCodeCtrl" matInput placeholder="Postal Code eg. 01-000" required
+                 [pattern]="'^\\d{2}([\\-]?\\d{3})?$'">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Street</mat-label>
+          <input formControlName="streetCtrl" matInput placeholder="Street" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Street number</mat-label>
+          <input formControlName="streetNumberCtrl" matInput placeholder="Street Number" type="number" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <button class="btn btn-secondary" mat-button matStepperNext>Payment</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Payment method</ng-template>
+      <mat-form-field>
+        <mat-label>Select payment method</mat-label>
+        <input formControlName="secondCtrl" matInput placeholder="PAYU"
+               required>
+      </mat-form-field>
+      <div>
+        <button class="btn btn-secondary" mat-button matStepperPrevious>Back</button>
+        <button class="btn btn-success" mat-button matStepperNext>Finish order</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Finish order</ng-template>
+    <p>You are now all set up.</p>
+    <div>
+      <button class="btn btn-success" (click)="onSubmitOrder()">Submit order</button>
+      <button class="btn btn-secondary" mat-button matStepperPrevious>Back</button>
+      <button class="btn btn-danger" (click)="stepper.reset()" mat-button>Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

@@ -85,8 +85,6 @@ export class ProductDetailsComponent implements OnInit {
     }, error => {
       window.alert(error);
       });
-
-
   }
 
 
@@ -100,18 +98,11 @@ export class ProductDetailsComponent implements OnInit {
     );
   }
 
-  canAddToBucket(): boolean {
-    return this.authenticationService.isLogged();
-  }
-
   sendReview(data) {
     return this.reviewService.sendReview(data).subscribe(response => {
       window.location.reload();
     }, error => {
       window.alert('Błąd wysyłki opinii.');
     });
-
   }
-
-
 }

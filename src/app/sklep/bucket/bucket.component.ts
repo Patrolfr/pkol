@@ -3,6 +3,7 @@ import {AppState, BucketEntry} from '../ngRx-store/user-bucket.reducers';
 import {Store} from '@ngrx/store';
 import {RemoveProduct} from '../ngRx-store/bucket.actions';
 import {Observable, Subscription} from 'rxjs';
+import {AuthenticationService} from '../service/authentication.service';
 
 @Component({
   selector: 'app-bucket',
@@ -12,25 +13,18 @@ import {Observable, Subscription} from 'rxjs';
 export class BucketComponent implements OnInit, OnDestroy {
 
   storeSubscription: Subscription;
-
-  totalCostInPln = 0;
-  totalDiscountInPln = 0;
-
   bucketEntries: Observable<BucketEntry[]>;
+  totalCostInPln: Observable<number>;
+  totalDiscountInPln: Observable<number>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>,
+              public authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
     this.bucketEntries = this.store.select('bucketState', 'entries');
-    this.bucketEntries.subscribe(entires => {
-      this.totalCostInPln = 0;
-      this.totalDiscountInPln = 0;
-      entires.forEach((it: BucketEntry) => {
-        this.totalCostInPln = this.totalCostInPln + it.getTotalPrice();
-        this.totalDiscountInPln = this.totalDiscountInPln + it.getTotalDiscount();
-      });
-    });
+    this.totalCostInPln = this.store.select('bucketState', 'totalCostInPln');
+    this.totalDiscountInPln = this.store.select('bucketState', 'totalDiscountInPln');
   }
 
   onRemoveProduct(productId: number) {

@@ -38,13 +38,17 @@ export interface BucketState {
   entries: BucketEntry[];
   productsInIds: number[];
   totalCostInPln: number;
+  totalDiscountInPln: number;
+  totalAmount: number;
 }
 
 const initialState: BucketState = {
   entries: [],
   productsIn: [],
   productsInIds: [],
-  totalCostInPln: 0
+  totalCostInPln: 0,
+  totalDiscountInPln: 0,
+  totalAmount: 0
 };
 
 export function bucketReducer(state: BucketState = initialState, action: BucketActions) {
@@ -59,17 +63,36 @@ export function bucketReducer(state: BucketState = initialState, action: BucketA
       } else {
         entryUpdatedOrNew = new BucketEntry(addAction.payload.product, addAction.payload.amount);
       }
+      const newEntries = [...bucketEntries, entryUpdatedOrNew];
+
+      let totalCostInPln = 0;
+      let totalDiscountInPln = 0;
+      let totalAmount = 0;
+      newEntries.forEach((it: BucketEntry) => {
+        totalCostInPln = totalCostInPln + it.getTotalPrice();
+        totalDiscountInPln = totalDiscountInPln + it.getTotalDiscount();
+        totalAmount = totalAmount + it.amount;
+      });
+
       return {
         ...state,
         productsIn: [...state.productsIn, addAction.payload.product],
         productsInIds: [...state.productsInIds, addAction.payload.product.id],
-        entries: [...bucketEntries, entryUpdatedOrNew],
-        totalCostInPln: state.totalCostInPln + 1
+        entries: newEntries,
+        totalCostInPln: totalCostInPln,
+        totalDiscountInPln: totalDiscountInPln,
+        totalAmount: totalAmount,
       };
     case REMOVE_PRODUCT:
       const action2 = action as RemoveProduct;
       let bucketEntries2 = [...state.entries].slice();
       bucketEntries2 = bucketEntries2.filter((item => item.product.id !== action2.payload));
+
+      bucketEntries2.forEach((it: BucketEntry) => {
+        totalCostInPln = totalCostInPln + it.getTotalPrice();
+        totalDiscountInPln = totalDiscountInPln + it.getTotalDiscount();
+        totalAmount = totalAmount + it.amount;
+      });
       return {
         ...state,
         entries: [...bucketEntries2],

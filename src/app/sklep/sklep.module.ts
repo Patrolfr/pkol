@@ -20,6 +20,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {JwtInterceptor} from './interceptor/auth.interceptor';
 import {ErrorInterceptor} from './interceptor/error.interceptor';
+import {CheckoutComponent} from './order/checkout/checkout.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {UserProfileComponent} from './user/user-profile/user-profile.component';
+import {OrderDetailsComponent} from './order/order-details/order-details.component';
+import {OrderService} from './service/order.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +40,10 @@ import {ErrorInterceptor} from './interceptor/error.interceptor';
     ProductsByCategoryComponent,
     SklepComponent,
     ProductDetailsComponent,
-    BucketComponent
+    BucketComponent,
+    CheckoutComponent,
+    UserProfileComponent,
+    OrderDetailsComponent
   ],
   exports: [
     SklepComponent
@@ -41,14 +52,18 @@ import {ErrorInterceptor} from './interceptor/error.interceptor';
     CommonModule,
     SklepRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
   providers: [
     DataService,
     CategoryService,
     DataMockService,
     ProductService,
-    // ,{ provide: APP_INITIALIZER, useFactory: initializer, multi: true, deps: [KeycloakService]}
+    OrderService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: APP_INITIALIZER, useFactory: initializeCategories, deps: [DataService, CategoryService], multi: true},

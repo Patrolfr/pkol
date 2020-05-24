@@ -29,8 +29,4 @@ export class ProductItemComponent implements OnInit {
   addToBucket() {
     this.store.dispatch(new AddProduct({amount: 1, product: this.product}));
   }
-
-  canAddToBucket(): boolean {
-    return this.authenticationService.isLogged();
-  }
 }

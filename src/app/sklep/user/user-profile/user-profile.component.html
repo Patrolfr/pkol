@@ -1,0 +1,28 @@
+<h3>Orders:</h3>
+
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">City</th>
+      <th scope="col">Address</th>
+      <th scope="col">Status</th>
+      <th scope="col">Payment Type</th>
+      <th scope="col">Delivery Type</th>
+      <th scope="col">Total Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of (orders | async), let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ order.city }}</td>
+      <td>{{ order.street_address }}</td>
+      <td>{{ order.status }}</td>
+      <td>{{ order.payment_type }}</td>
+      <td>{{ order.delivery_type }}</td>
+      <td>{{ order.total_price }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

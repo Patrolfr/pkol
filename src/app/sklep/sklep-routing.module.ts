@@ -1,21 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CanAuthenticationGuard} from './guard/can-authentication-guard';
-import {ProtectedComponent} from './protected/protected.component';
+import {AuthenticationGuard} from './guard/authentication-guard.service';
 import {StartComponent} from './start/start.component';
 import {ProductsByCategoryComponent} from './products/products-by-category/products-by-category.component';
 import {ProductDetailsComponent} from './products/product-details/product-details.component';
 import {BucketComponent} from './bucket/bucket.component';
 import {LoginComponent} from './authentication/login/login.component';
 import {RegistrationComponent} from './authentication/registration/registration.component';
+import {CheckoutComponent} from './order/checkout/checkout.component';
+import {UserProfileComponent} from './user/user-profile/user-profile.component';
 
 const routes: Routes = [
-  {
-    path: 'protected',
-    component: ProtectedComponent,
-    canActivate: [CanAuthenticationGuard],
-    data: {roles: ['NormalUser']}
-  },
   {
     path: '',
     component: StartComponent,
@@ -31,6 +26,16 @@ const routes: Routes = [
   {
     path: 'bucket',
     component: BucketComponent
+  },
+  {
+    path: 'checkout',
+    canActivate: [AuthenticationGuard],
+    component: CheckoutComponent
+  },
+  {
+    path: 'profile',
+    canActivate: [AuthenticationGuard],
+    component: UserProfileComponent
   },
   {
     path: 'login',
