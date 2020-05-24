@@ -53,57 +53,53 @@
   </div>
 </div>
 
-<div *ngIf="authenticationService.isLogged()">
-  <div class="row">
-    <h3>Add a review:</h3>
+
+
+<!--Wyswietlanie recenzji-->
+
+<div class="card card-outline-secondary my-4">
+  <div class="card-header">
+    Recenzje
   </div>
-  <div class="row">
-    <form [formGroup]="reviewForm" (ngSubmit)="onSubmitReview()">
-      <div class="form-row">
-        <label>Rating</label>
-        <select formControlName="rating" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.rating.errors }">
-          <option [ngValue]=""></option>
-          <option [ngValue]="0">0</option>
-          <option [ngValue]="1">1</option>
-          <option [ngValue]="2">2</option>
-          <option [ngValue]="4">4</option>
-          <option [ngValue]="5">5</option>
-        </select>
-        <div *ngIf="submitted && f.rating.errors" class="invalid-feedback">
-          <div *ngIf="f.rating.errors.required">Rating field is required</div>
-        </div>
-      </div>
-      <div class="form-row">
-        <label>Comment</label>
-        <input type="text" formControlName="comment" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && f.comment.errors }">
-        <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
-          <div *ngIf="f.comment.errors.required">Comment field is required</div>
-        </div>
-      </div>
-      <div class="submit">
-        <button class="btn btn-primary mr-1">Submit</button>
-      </div>
-    </form>
-  </div>
-
-</div>
-
-
-<div class="row mt-2">
-  <h3>Reviews:</h3>
-</div>
-
-<div *ngFor="let review of reviews" class="reviews">
-  <div style="border-style: solid">
-    <div class="row" style="border-bottom-style: dashed ;margin: 0">
-      <h5>User: {{review.username}} => Rating: {{review.rating}}</h5>
+  <div class="card-body">
+    <div *ngFor="let review of reviews">
+      <p>{{ review.comment }}</p>
+      <small class="text-muted">Opublikowano przez {{ review.username }} ocena: {{ review.rating }}</small>
+      <hr>
     </div>
-    <div class="row" style="margin: 0">
-      <p>Review: {{review.comment}}</p>
+    <div *ngIf="authenticationService.isLogged()">
+      <div class="row">
+        <form [formGroup]="reviewForm" (ngSubmit)="onSubmitReview()" class="">
+          <div class="form-row col">
+            <label class="col">Ocena</label>
+            <select formControlName="rating" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.rating.errors }">
+              <option [ngValue]=""></option>
+              <option [ngValue]="0">0</option>
+              <option [ngValue]="1">1</option>
+              <option [ngValue]="2">2</option>
+              <option [ngValue]="4">4</option>
+              <option [ngValue]="5">5</option>
+            </select>
+            <div *ngIf="submitted && f.rating.errors" class="invalid-feedback">
+              <div *ngIf="f.rating.errors.required">Rating field is required</div>
+            </div>
+          </div>
+          <div class="form-row col">
+            <label class="mt-2">Komentarz</label>
+            <input type="text" formControlName="comment" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.comment.errors }">
+            <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
+              <div *ngIf="f.comment.errors.required">Comment field is required</div>
+            </div>
+          </div>
+          <div class="submit col">
+            <button class="btn btn-dark mt-2">Wyślij recenzje</button>
+          </div>
+        </form>
+      </div>
+    
     </div>
   </div>
 </div>
-
 
