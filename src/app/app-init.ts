@@ -1,25 +1,7 @@
-import {KeycloakService} from 'keycloak-angular';
-import {environment} from '../environments/environment';
 import {DataService} from './sklep/service/data.service';
+import {OrderService} from './sklep/service/order.service';
 
 export class AppInit {
-}
-
-export function initializer(keycloak: KeycloakService): () => Promise<any> {
-  return (): Promise<any> => keycloak.init({
-    config: {
-      url: environment.keycloak.url,
-      realm: environment.keycloak.realm,
-      clientId: environment.keycloak.clientId
-    },
-    initOptions: {
-      onLoad: 'check-sso',
-      checkLoginIframe: false
-    },
-    enableBearerInterceptor: true,
-    bearerExcludedUrls: ['/assets', '/clients/public']
-  });
-
 }
 
 export function initializeCategories(dataService: DataService) {
@@ -33,6 +15,14 @@ export function initializeCategories(dataService: DataService) {
 export function initializeProducts(dataService: DataService) {
   return (): Promise<any> => {
     return dataService.getProducts();
+  };
+}
+
+export function initializeOrderTypes(orderService: OrderService) {
+  return (): Promise<any> => {
+    orderService.getAllPaymentTypes();
+    orderService.getAllOrderStatuses();
+    return orderService.getAllDeliveryTypes();
   };
 }
 

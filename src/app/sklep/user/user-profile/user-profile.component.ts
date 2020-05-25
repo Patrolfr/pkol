@@ -20,4 +20,16 @@ export class UserProfileComponent implements OnInit {
     this.orders = this.orderService.getProductsOfCurrentUser();
   }
 
+  getPaymentTypeById(id: number) {
+    return this.orderService.paymentTypes.find(it => it.id === id).name;
+  }
+
+  getDeliveryTypeById(id: number) {
+    return this.orderService.deliveryTypes.find(it => it.id === id).name;
+  }
+
+  getStatusById(id: number) {
+    return this.orderService.orderStatuses.find(it => it.id === id).name;
+  }
+
 }

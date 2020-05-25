@@ -1,6 +1,6 @@
-<button (click)="isLinear = !isLinear" id="toggle-linear" mat-raised-button>
-  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
+<!--<button (click)="isLinear = !isLinear" id="toggle-linear" mat-raised-button>-->
+<!--  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}-->
+<!--</button>-->
 <mat-horizontal-stepper #stepper [linear]="isLinear">
   <mat-step [stepControl]="zeroFormGroup">
     <ng-template matStepLabel>Summary</ng-template>
@@ -36,7 +36,7 @@
       </h2>
     </div>
     <div>
-      <button mat-button matStepperNext class="btn btn-secondary">Fill out delivery data</button>
+      <button class="btn btn-secondary" mat-button matStepperNext>Fill out delivery data</button>
     </div>
   </mat-step>
   <mat-step [stepControl]="firstFormGroup">
@@ -51,8 +51,9 @@
       <div class="row">
         <mat-form-field>
           <mat-label>Postal Code</mat-label>
-          <input formControlName="postalCodeCtrl" matInput placeholder="Postal Code eg. 01-000" required
-                 [pattern]="'^\\d{2}([\\-]?\\d{3})?$'">
+          <input [pattern]="'^\\d{2}([\\-]?\\d{3})?$'" formControlName="postalCodeCtrl" matInput
+                 placeholder="Postal Code eg. 01-000"
+                 required>
         </mat-form-field>
       </div>
       <div class="row">
@@ -62,7 +63,16 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Street number</mat-label>
-          <input formControlName="streetNumberCtrl" matInput placeholder="Street Number" type="number" required>
+          <input formControlName="streetNumberCtrl" matInput placeholder="Street Number" required type="number">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Delivery type</mat-label>
+          <mat-select formControlName="deliveryType" required>
+            <mat-option *ngFor="let deliveryType of (deliveryTypes | async)"
+                        [value]="deliveryType.id">{{deliveryType.name}}</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div>
@@ -73,11 +83,77 @@
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Payment method</ng-template>
-      <mat-form-field>
-        <mat-label>Select payment method</mat-label>
-        <input formControlName="secondCtrl" matInput placeholder="PAYU"
-               required>
-      </mat-form-field>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Payment method</mat-label>
+          <mat-select formControlName="paymentType" required>
+            <mat-option *ngFor="let paymentType of (paymentTypes | async)"
+                        [value]="paymentType.id">{{paymentType.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngIf="this.secondFormGroup.controls['paymentType'].value == 4 && this.paymentSuccessful == false"
+           class="row" style="margin: 30px; padding: 20px">
+        <div class="col-xs-12">
+          <div class="card ">
+            <div class="card-header">
+              <div class="row">
+                <h3 class="text-xs-center">Payment Details</h3>
+                <img class="img-fluid cc-img"
+                     src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
+              </div>
+            </div>
+            <div class="card-block">
+              <form role="form">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      <label>CARD NUMBER</label>
+                      <div class="input-group">
+                        <input class="form-control" placeholder="Valid Card Number" type="tel"/>
+                        <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-7 col-md-7">
+                    <div class="form-group">
+                      <label><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span>
+                        DATE</label>
+                      <input class="form-control" placeholder="MM / YY" type="tel"/>
+                    </div>
+                  </div>
+                  <div class="col-xs-5 col-md-5 float-xs-right">
+                    <div class="form-group">
+                      <label>CV CODE</label>
+                      <input class="form-control" placeholder="CVC" type="tel"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      <label>CARD OWNER</label>
+                      <input class="form-control" placeholder="Card Owner Names" type="text"/>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-xs-12">
+                  <button class="btn btn-warning btn-lg btn-block" (click)="onProcessPayment()">Process payment</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="paymentSuccessful">
+        Payment successful!
+      </div>
       <div>
         <button class="btn btn-secondary" mat-button matStepperPrevious>Back</button>
         <button class="btn btn-success" mat-button matStepperNext>Finish order</button>
@@ -88,9 +164,9 @@
     <ng-template matStepLabel>Finish order</ng-template>
     <p>You are now all set up.</p>
     <div>
-      <button class="btn btn-success" (click)="onSubmitOrder()">Submit order</button>
+      <button (click)="onSubmitOrder()" class="btn btn-success">Submit order</button>
       <button class="btn btn-secondary" mat-button matStepperPrevious>Back</button>
-      <button class="btn btn-danger" (click)="stepper.reset()" mat-button>Reset</button>
+      <button (click)="stepper.reset()" class="btn btn-danger" mat-button>Reset</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

@@ -14,7 +14,7 @@ import {BucketComponent} from './bucket/bucket.component';
 import {DataService} from './service/data.service';
 import {CategoryService} from './service/category.service';
 import {DataMockService} from './service/dataMockService';
-import {initializeCategories, initializeProducts} from '../app-init';
+import {initializeCategories, initializeOrderTypes, initializeProducts} from '../app-init';
 import {ProductService} from './service/product.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -28,6 +28,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {UserProfileComponent} from './user/user-profile/user-profile.component';
 import {OrderDetailsComponent} from './order/order-details/order-details.component';
 import {OrderService} from './service/order.service';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {OrderService} from './service/order.service';
     MatInputModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ],
   providers: [
     DataService,
@@ -67,7 +69,8 @@ import {OrderService} from './service/order.service';
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: APP_INITIALIZER, useFactory: initializeCategories, deps: [DataService, CategoryService], multi: true},
-    {provide: APP_INITIALIZER, useFactory: initializeProducts, deps: [DataService, CategoryService], multi: true}
+    {provide: APP_INITIALIZER, useFactory: initializeProducts, deps: [DataService, CategoryService], multi: true},
+    {provide: APP_INITIALIZER, useFactory: initializeOrderTypes, deps: [OrderService], multi: true}
   ]
 })
 export class SklepModule {

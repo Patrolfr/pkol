@@ -18,9 +18,9 @@
       <td>{{ i + 1 }}</td>
       <td>{{ order.city }}</td>
       <td>{{ order.street_address }}</td>
-      <td>{{ order.status }}</td>
-      <td>{{ order.payment_type }}</td>
-      <td>{{ order.delivery_type }}</td>
+      <td>{{ getStatusById(order.status) }}</td>
+      <td>{{ getPaymentTypeById(order.payment_type) }}</td>
+      <td>{{ getDeliveryTypeById(order.delivery_type) }}</td>
       <td>{{ order.total_price }}</td>
     </tr>
     </tbody>

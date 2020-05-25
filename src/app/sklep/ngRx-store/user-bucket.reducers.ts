@@ -52,6 +52,9 @@ const initialState: BucketState = {
 };
 
 export function bucketReducer(state: BucketState = initialState, action: BucketActions) {
+  let totalCostInPln = 0;
+  let totalDiscountInPln = 0;
+  let totalAmount = 0;
   switch (action.type) {
     case ADD_PRODUCT:
       const addAction = action as AddProduct;
@@ -65,9 +68,6 @@ export function bucketReducer(state: BucketState = initialState, action: BucketA
       }
       const newEntries = [...bucketEntries, entryUpdatedOrNew];
 
-      let totalCostInPln = 0;
-      let totalDiscountInPln = 0;
-      let totalAmount = 0;
       newEntries.forEach((it: BucketEntry) => {
         totalCostInPln = totalCostInPln + it.getTotalPrice();
         totalDiscountInPln = totalDiscountInPln + it.getTotalDiscount();
@@ -96,6 +96,9 @@ export function bucketReducer(state: BucketState = initialState, action: BucketA
       return {
         ...state,
         entries: [...bucketEntries2],
+        totalCostInPln: totalCostInPln,
+        totalDiscountInPln: totalDiscountInPln,
+        totalAmount: totalAmount,
       };
     default:
       return state;
