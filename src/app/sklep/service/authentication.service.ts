@@ -6,6 +6,7 @@ import { User} from '../models/user';
 
 export const LOGIN_URL = 'http://137.135.245.109:8000/api/token/';
 export const REGISTRATION_URL = 'http://137.135.245.109:8000/users/user/';
+export const USER_URL = 'http://137.135.245.109:8000/users/user/';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -30,7 +31,6 @@ export class AuthenticationService {
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
         }
-
         return user;
       }));
   }
@@ -49,6 +49,10 @@ export class AuthenticationService {
 
   register(user: User) {
     return this.http.post(REGISTRATION_URL, user);
+  }
+
+  getUserDetails(): Observable<any>{
+    return this.http.get<any>(USER_URL);
   }
 
 }

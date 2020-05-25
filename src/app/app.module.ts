@@ -10,17 +10,18 @@ import {SklepModule} from './sklep/sklep.module';
 import {StoreModule} from '@ngrx/store';
 import {bucketReducer} from './sklep/ngRx-store/user-bucket.reducers';
 import {HttpClientModule} from '@angular/common/http';
-import {FooterComponent} from './sklep/footer/footer.component';
 import {BrandZoneComponent} from './sklep/brand-zone/brand-zone.component';
 import {AutoCompleteModule} from 'primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthenticationModule} from './sklep/authentication/authentication.module';
+import {FooterModule} from './sklep/footer/footer.module';
+import {FooterComponent} from './sklep/footer/template/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    FooterComponent,
+
     BrandZoneComponent
   ],
   imports: [
@@ -35,7 +36,8 @@ import {AuthenticationModule} from './sklep/authentication/authentication.module
     AutoCompleteModule,
     BrowserAnimationsModule,
     AuthenticationModule,
-    StoreModule.forRoot({bucketState: bucketReducer})
+    StoreModule.forRoot({bucketState: bucketReducer}),
+    FooterModule
   ],
   providers: [
     // ,{ provide: APP_INITIALIZER, useFactory: initializer, multi: true, deps: [KeycloakService]}
