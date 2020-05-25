@@ -18,6 +18,7 @@ import { HelpCenterComponent } from './help-center/help-center.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ShopRulesComponent } from './shop-rules/shop-rules.component';
 import { TutorialsComponent } from './tutorials/tutorials.component';
+import {MyMessagesComponent} from './my-messages/my-messages.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TutorialsComponent } from './tutorials/tutorials.component';
     HelpCenterComponent,
     PrivacyPolicyComponent,
     ShopRulesComponent,
-    TutorialsComponent
+    TutorialsComponent,
+    MyMessagesComponent
   ],
   imports: [
     CommonModule,

@@ -14,6 +14,7 @@ import {ShipmentTrackingComponent} from './shipment-tracking/shipment-tracking.c
 import {ShopRulesComponent} from './shop-rules/shop-rules.component';
 import {StationaryStoresComponent} from './stationary-stores/stationary-stores.component';
 import {TutorialsComponent} from './tutorials/tutorials.component';
+import {MyMessagesComponent} from './my-messages/my-messages.component';
 
 
 const routes: Routes = [
@@ -75,6 +76,10 @@ const routes: Routes = [
       {
         path: 'tutorials',
         component: TutorialsComponent,
+      },
+      {
+        path: 'myMessages',
+        component: MyMessagesComponent,
       }
     ]
   }];

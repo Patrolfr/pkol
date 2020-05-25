@@ -1,0 +1,39 @@
+.message-container {
+  position: relative;
+  width: 100%;
+  min-height: fit-content;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.from-user {
+  border-radius: 25px;
+  position: relative;
+  text-align: right;
+  left:  20%;
+  margin-top: 20px;
+  max-width: 80%;
+  background-color: #beffc7;
+}
+
+.from-service {
+  border-radius: 25px;
+  position: relative;
+  margin-top: 20px;
+  max-width: 80%;
+  background-color: #acf8ff;
+}
+.text-in-message{
+  display: inline-block;
+  margin: 7px 20px;
+}
+.mes-title{
+  text-align: center;
+  font-size: 25px;
+  background-color: #ebebeb;
+  border-radius: 25px;
+}
+.main{
+  background-color: #fafafa;
+  border-radius: 25px;
+}

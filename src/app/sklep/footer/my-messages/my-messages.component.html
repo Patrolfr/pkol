@@ -1,0 +1,31 @@
+<div class="main">
+  <div class="mes-title">
+    <div style="padding-top: 20px; padding-bottom: 20px; font-weight: bold">
+      W tym miejscu znajdują się wszystkie twoje wiadomości.
+    </div>
+  </div>
+  <div>
+    <div *ngFor="let message of messages">
+
+      <div>
+        <div *ngIf="message.fromUser === true" class="from-user">
+          <div class="text-in-message">
+            <p style="font-weight: bold">Moja wiadomość</p>
+            {{message.content}}
+          </div>
+        </div>
+      </div>
+      <div>
+        <div *ngIf="message.fromUser === false" class="from-service">
+          <div class="text-in-message">
+            <p style="font-weight: bold">Przedstawiciel serwisu Monster.pl</p>
+            {{message.content}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center">
+      <button routerLink="/ftr/contactUs" style="margin: 20px" class="btn btn-primary">Odpisz na ostatnią wiadomość lub napisz nowe zapytanie</button>
+    </div>
+  </div>
+</div>
