@@ -14,21 +14,25 @@
         ({{ 40 }})
       </h5>
     </h3>
-    <h4>{{product.price}} PLN</h4>
-    <div class="text-info asd">Discount: {{product.discount}} PLN</div>
-    <div class="text-info asd">On stock: {{product.items_left}} </div>
-    <div class="text-info asd">Expires on: {{product.expiration_timestamp}}</div>
+    <h4 class="mb-2">
+      {{product.price}} PLN
+    </h4>
+    <h5>
+      <p class="my-1">Zniżka: {{product.discount}} PLN</p>
+      <p class="my-1">Na magazynie: {{product.items_left}} sztuk</p>
+      <p class="my-1">Oferta ważna do: {{product.expiration_timestamp}}</p>
+    </h5>
     <p [textContent]="product.description" class="card-text"></p>
   </div>
   <div class="card-footer">
     <form #productsAmountForm="ngForm" (ngSubmit)="onSubmitItem()">
-      <div class="row">
-        <div class="col-xs-3">
-          <label for="amount">Amount</label>
-        </div>
-        <div class="col-xs-2" style="margin: 10px">
+      <div class="d-flex">
+
+          <label for="amount" class="form-control" style="width: 80px;">Sztuk</label>
+
           <input
-            class="form-control"
+            style="width: 80px;"
+            class="form-control mx-2"
             id="amount"
             name="amount"
             ngModel
@@ -36,71 +40,60 @@
             required
             type="number"
           >
-        </div>
 
-        <div class="col-xs-7">
           <button
             [disabled]="productsAmountForm.invalid"
-            class="btn btn-success btn-block btn-lg"
+            class="btn btn-success btn-block"
+            style="height: 38px;"
             type="submit">Dodaj do koszyka!
           </button>
-        </div>
+
       </div>
     </form>
   </div>
 </div>
 
-<div *ngIf="authenticationService.isLogged()">
-  <div class="row">
-    <h3>Add a review:</h3>
+<div class="card card-outline-secondary my-4">
+  <div class="card-header">
+    Recenzje
   </div>
-  <div class="row">
-    <form [formGroup]="reviewForm" (ngSubmit)="onSubmitReview()">
-      <div class="form-row">
-        <label>Rating</label>
-        <select formControlName="rating" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.rating.errors }">
-          <option [ngValue]=""></option>
-          <option [ngValue]="0">0</option>
-          <option [ngValue]="1">1</option>
-          <option [ngValue]="2">2</option>
-          <option [ngValue]="4">4</option>
-          <option [ngValue]="5">5</option>
-        </select>
-        <div *ngIf="submitted && f.rating.errors" class="invalid-feedback">
-          <div *ngIf="f.rating.errors.required">Rating field is required</div>
-        </div>
-      </div>
-      <div class="form-row">
-        <label>Comment</label>
-        <input type="text" formControlName="comment" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && f.comment.errors }">
-        <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
-          <div *ngIf="f.comment.errors.required">Comment field is required</div>
-        </div>
-      </div>
-      <div class="submit">
-        <button class="btn btn-primary mr-1">Submit</button>
-      </div>
-    </form>
-  </div>
-
-</div>
-
-
-<div class="row">
-  <h3>Reviews:</h3>
-</div>
-
-<div *ngFor="let review of reviews" class="reviews">
-  <div style="border-style: solid">
-    <div class="row" style="border-bottom-style: dashed ;margin: 0">
-      <h5>User: {{review.username}} => Rating: {{review.rating}}</h5>
+  <div class="card-body">
+    <div *ngFor="let review of reviews">
+      <p>{{ review.comment }}</p>
+      <small class="text-muted">Opublikowano przez {{ review.username }} ocena: {{ review.rating }}</small>
+      <hr>
     </div>
-    <div class="row" style="margin: 0">
-      <p>Review: {{review.comment}}</p>
+    <div *ngIf="authenticationService.isLogged()">
+      <div class="row">
+        <form [formGroup]="reviewForm" (ngSubmit)="onSubmitReview()" class="">
+          <div class="form-row col">
+            <label class="col">Ocena</label>
+            <select formControlName="rating" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.rating.errors }">
+              <option [ngValue]=""></option>
+              <option [ngValue]="0">0</option>
+              <option [ngValue]="1">1</option>
+              <option [ngValue]="2">2</option>
+              <option [ngValue]="4">4</option>
+              <option [ngValue]="5">5</option>
+            </select>
+            <div *ngIf="submitted && f.rating.errors" class="invalid-feedback">
+              <div *ngIf="f.rating.errors.required">Rating field is required</div>
+            </div>
+          </div>
+          <div class="form-row col">
+            <label class="mt-2">Komentarz</label>
+            <input type="text" formControlName="comment" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.comment.errors }">
+            <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
+              <div *ngIf="f.comment.errors.required">Comment field is required</div>
+            </div>
+          </div>
+          <div class="submit col">
+            <button class="btn btn-dark mt-2">Wyślij recenzje</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
-
-
