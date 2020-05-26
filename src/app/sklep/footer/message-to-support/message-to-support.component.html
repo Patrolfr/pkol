@@ -49,6 +49,9 @@
       <button [disabled]="!isLogged" (click)="sendMessage()" name="submit" type="submit" class="btn btn-primary">
         Submit
       </button>
+      <button *ngIf="isLogged" (click)="sendMessage()" routerLink="/ftr/myMessages" name="submit" type="submit" class="btn btn-success messages-button">
+        Moje wiadomości
+      </button>
     </div>
   </div>
 </form>
