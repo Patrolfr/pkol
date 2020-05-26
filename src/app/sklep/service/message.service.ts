@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Message} from '../models/message';
 import {Observable} from 'rxjs';
@@ -23,7 +23,9 @@ export class MessageService {
     let messageSerialzier = new MessageSerialzier();
     this.messages = [];
     return this.http.get<Message[]>(MESSAGE_URL).pipe(map(result => {
-      result.forEach(value => {this.messages.push(messageSerialzier.fromJson(value))})
+      result.forEach(value => {
+        this.messages.push(messageSerialzier.fromJson(value));
+      });
       return this.messages;
     }));
   }
