@@ -4,6 +4,7 @@ import {DataService} from '../service/data.service';
 import {Product} from '../domain/model/product.model';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../service/authentication.service';
+import {ChatBotOverlayService} from '../service/chat-bot-overlay.service';
 
 @Component({
   selector: 'app-navigation',
@@ -20,7 +21,8 @@ export class NavigationComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private chatBot: ChatBotOverlayService,
   ) {
   }
 
@@ -44,5 +46,9 @@ export class NavigationComponent implements OnInit {
 
   logOut() {
     return this.authenticationService.logout();
+  }
+
+  openChat() {
+    this.chatBot.open();
   }
 }

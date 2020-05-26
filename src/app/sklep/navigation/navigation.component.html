@@ -10,7 +10,7 @@
 
       <div class="col-6 d-flex justify-content-center" style="padding: 0">
         <label style="display: inline">Search by name:</label>
-        <p-autoComplete style="display: inline"
+        <p-autoComplete
           (completeMethod)="searchByPartialName($event)"
           (onSelect)="navigateToProduct()"
           [(ngModel)]="selectedProduct"
@@ -23,7 +23,9 @@
       <!-- right -->
       <div class="col-2 d-inline-block">
         <div style="float: right">
-
+          <a *ngIf="isUserLoggedIn()" class="text-danger" (click)="openChat()">
+            <p>FAQ bot</p>
+          </a>
           <a *ngIf="isUserLoggedIn()" class="text-danger" routerLink="/">
             <i class="far fa-heart fa-2x mr-3"></i>
           </a>

@@ -29,6 +29,8 @@ import {UserProfileComponent} from './user/user-profile/user-profile.component';
 import {OrderDetailsComponent} from './order/order-details/order-details.component';
 import {OrderService} from './service/order.service';
 import {MatSelectModule} from '@angular/material/select';
+import {ChatBotOverlayService} from './service/chat-bot-overlay.service';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,7 @@ import {MatSelectModule} from '@angular/material/select';
     BucketComponent,
     CheckoutComponent,
     UserProfileComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
   ],
   exports: [
     SklepComponent
@@ -58,7 +60,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatStepperModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [
     DataService,
@@ -66,6 +68,7 @@ import {MatSelectModule} from '@angular/material/select';
     DataMockService,
     ProductService,
     OrderService,
+    ChatBotOverlayService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: APP_INITIALIZER, useFactory: initializeCategories, deps: [DataService, CategoryService], multi: true},

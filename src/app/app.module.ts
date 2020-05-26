@@ -15,13 +15,13 @@ import {AutoCompleteModule} from 'primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthenticationModule} from './sklep/authentication/authentication.module';
 import {FooterModule} from './sklep/footer/footer.module';
-import {FooterComponent} from './sklep/footer/template/footer.component';
+import {ChatBotComponent} from './sklep/chat-bot/chat-bot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-
+    ChatBotComponent,
     BrandZoneComponent
   ],
   imports: [
@@ -37,7 +37,7 @@ import {FooterComponent} from './sklep/footer/template/footer.component';
     BrowserAnimationsModule,
     AuthenticationModule,
     StoreModule.forRoot({bucketState: bucketReducer}),
-    FooterModule
+    FooterModule,
   ],
   providers: [
     // ,{ provide: APP_INITIALIZER, useFactory: initializer, multi: true, deps: [KeycloakService]}
