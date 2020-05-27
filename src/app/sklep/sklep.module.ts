@@ -30,6 +30,8 @@ import {OrderDetailsComponent} from './order/order-details/order-details.compone
 import {OrderService} from './service/order.service';
 import {MatSelectModule} from '@angular/material/select';
 import {ChatBotOverlayService} from './service/chat-bot-overlay.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {BucketEventsEmitter} from './service/bucket-events-emitter';
 
 
 @NgModule({
@@ -61,6 +63,7 @@ import {ChatBotOverlayService} from './service/chat-bot-overlay.service';
     MatFormFieldModule,
     MatButtonModule,
     MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [
     DataService,
@@ -69,6 +72,7 @@ import {ChatBotOverlayService} from './service/chat-bot-overlay.service';
     ProductService,
     OrderService,
     ChatBotOverlayService,
+    BucketEventsEmitter,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: APP_INITIALIZER, useFactory: initializeCategories, deps: [DataService, CategoryService], multi: true},

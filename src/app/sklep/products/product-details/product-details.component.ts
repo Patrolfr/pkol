@@ -8,6 +8,7 @@ import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {AuthenticationService} from '../../service/authentication.service';
 import {Review} from '../../domain/model/review.model';
 import {ReviewService} from '../../service/review.service';
+import {BucketEventsEmitter} from '../../service/bucket-events-emitter';
 
 @Component({
   selector: 'app-product-details',
@@ -29,6 +30,7 @@ export class ProductDetailsComponent implements OnInit {
               private productService: ProductService,
               private reviewService: ReviewService,
               private store: Store,
+              private emitter: BucketEventsEmitter,
               private formBuilder: FormBuilder) {
   }
 
@@ -93,9 +95,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToBucket(amountOfProducts: number = 1) {
-    this.store.dispatch(new AddProduct(
-      {amount: amountOfProducts, product: this.product})
-    );
+    const addEvent = new AddProduct({amount: amountOfProducts, product: this.product});
+    this.store.dispatch(addEvent);
+    this.emitter.emit(addEvent);
   }
 
   sendReview(data) {

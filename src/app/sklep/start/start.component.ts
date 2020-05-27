@@ -14,5 +14,4 @@ export class StartComponent implements OnInit {
   ngOnInit(): void {
     console.log('app runs with env configuration: ' + environment.name);
   }
-
 }

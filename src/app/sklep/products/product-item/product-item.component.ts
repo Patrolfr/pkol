@@ -2,7 +2,8 @@ import {Component, Injectable, Input, OnInit} from '@angular/core';
 import {Product} from '../../domain/model/product.model';
 import {Store} from '@ngrx/store';
 import {AddProduct} from '../../ngRx-store/bucket.actions';
-import {AuthenticationService} from '../../service/authentication.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {BucketEventsEmitter} from '../../service/bucket-events-emitter';
 
 @Component({
   selector: 'app-product-item',
@@ -18,7 +19,8 @@ export class ProductItemComponent implements OnInit {
   votes = 0;
 
   constructor(private store: Store,
-              private authenticationService: AuthenticationService) {
+              private emitter: BucketEventsEmitter,
+              private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -27,6 +29,8 @@ export class ProductItemComponent implements OnInit {
   }
 
   addToBucket() {
-    this.store.dispatch(new AddProduct({amount: 1, product: this.product}));
+    const addAction = new AddProduct({amount: 1, product: this.product});
+    this.store.dispatch(addAction);
+    this.emitter.emit(addAction);
   }
 }

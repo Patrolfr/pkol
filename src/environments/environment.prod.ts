@@ -1,5 +1,5 @@
 export const environment = {
   name: 'production',
   production: true,
-  SERVER_URL: 'http://137.135.245.109:8000'
+  SERVER_URL: 'http://51.104.157.206:8000'
 };
