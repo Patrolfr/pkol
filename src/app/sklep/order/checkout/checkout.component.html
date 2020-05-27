@@ -3,15 +3,15 @@
 <!--</button>-->
 <mat-horizontal-stepper #stepper [linear]="isLinear">
   <mat-step [stepControl]="zeroFormGroup">
-    <ng-template matStepLabel>Summary</ng-template>
+    <ng-template matStepLabel>Podsumowanie</ng-template>
     <div class="row">
       <table class="table">
         <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Product</th>
-          <th scope="col">Amount</th>
-          <th scope="col">Price</th>
+          <th scope="col">Produkt</th>
+          <th scope="col">Sztuk</th>
+          <th scope="col">Cena[zł]</th>
         </tr>
         </thead>
         <tbody>
@@ -25,32 +25,32 @@
         <tfoot>
         <tr>
           <th scope="col"></th>
-          <th scope="col">Summary</th>
+          <th scope="col">Suma</th>
           <th scope="col">{{ totalAmount | async }}</th>
           <th scope="col">{{ (totalCostInPln | async).toFixed(2) }}</th>
         </tr>
         </tfoot>
       </table>
       <h2 *ngIf=" (totalDiscountInPln | async) !== 0">
-        Grats! You are saving {{totalDiscountInPln | async}} PLN today :)
+        Dzięki zniżką udało Ci się zaoszczędzić {{totalDiscountInPln | async}} złotych! :)
       </h2>
     </div>
     <div>
-      <button class="btn btn-secondary" mat-button matStepperNext>Fill out delivery data</button>
+      <button class="btn btn-secondary" mat-button matStepperNext>Uzupełnij dane dostawy</button>
     </div>
   </mat-step>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out delivery data</ng-template>
+      <ng-template matStepLabel>Dane dostawy</ng-template>
       <div class="row">
         <mat-form-field>
-          <mat-label>City</mat-label>
+          <mat-label>Miasto</mat-label>
           <input formControlName="cityCtrl" matInput placeholder="City" required>
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field>
-          <mat-label>Postal Code</mat-label>
+          <mat-label>Kod pocztowy</mat-label>
           <input [pattern]="'^\\d{2}([\\-]?\\d{3})?$'" formControlName="postalCodeCtrl" matInput
                  placeholder="Postal Code eg. 01-000"
                  required>
@@ -58,17 +58,17 @@
       </div>
       <div class="row">
         <mat-form-field>
-          <mat-label>Street</mat-label>
+          <mat-label>Ulica</mat-label>
           <input formControlName="streetCtrl" matInput placeholder="Street" required>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Street number</mat-label>
+          <mat-label>Nr budynku</mat-label>
           <input formControlName="streetNumberCtrl" matInput placeholder="Street Number" required type="number">
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field>
-          <mat-label>Delivery type</mat-label>
+          <mat-label>Typ dostawy</mat-label>
           <mat-select formControlName="deliveryType" required>
             <mat-option *ngFor="let deliveryType of (deliveryTypes | async)"
                         [value]="deliveryType.id">{{deliveryType.name}}</mat-option>
@@ -76,16 +76,16 @@
         </mat-form-field>
       </div>
       <div>
-        <button class="btn btn-secondary" mat-button matStepperNext>Payment</button>
+        <button class="btn btn-secondary" mat-button matStepperNext>Płatność</button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Payment method</ng-template>
+      <ng-template matStepLabel>Metody płatności</ng-template>
       <div class="row">
         <mat-form-field>
-          <mat-label>Payment method</mat-label>
+          <mat-label>Metody płatności</mat-label>
           <mat-select formControlName="paymentType" required>
             <mat-option *ngFor="let paymentType of (paymentTypes | async)"
                         [value]="paymentType.id">{{paymentType.name}}</mat-option>
@@ -98,17 +98,17 @@
           <div class="card ">
             <div class="card-header">
               <div class="row">
-                <h3 class="text-xs-center">Payment Details</h3>
+                <h3 class="text-xs-center">Szczegóły płatności</h3>
                 <img class="img-fluid cc-img"
                      src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
               </div>
             </div>
             <div class="card-block">
               <form role="form">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div class="form-group">
-                      <label>CARD NUMBER</label>
+                <div class="">
+                  <div class="col">
+                    <div class="form-group mt-2">
+                      <label>NUMER KARTY</label>
                       <div class="input-group">
                         <input class="form-control" placeholder="Valid Card Number" type="tel"/>
                         <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
@@ -116,26 +116,26 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-xs-7 col-md-7">
+                <div class="">
+                  <div class="col">
                     <div class="form-group">
-                      <label><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span>
-                        DATE</label>
+                      <label><span class="hidden-xs">Termin</span><span class="visible-xs-inline"></span>
+                        ważności</label>
                       <input class="form-control" placeholder="MM / YY" type="tel"/>
                     </div>
                   </div>
-                  <div class="col-xs-5 col-md-5 float-xs-right">
+                  <div class="col">
                     <div class="form-group">
-                      <label>CV CODE</label>
-                      <input class="form-control" placeholder="CVC" type="tel"/>
+                      <label>CV KOD</label>
+                      <input class="form-control" placeholder="CV KOD" type="tel"/>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-xs-12">
+                <div class="">
+                  <div class="col">
                     <div class="form-group">
-                      <label>CARD OWNER</label>
-                      <input class="form-control" placeholder="Card Owner Names" type="text"/>
+                      <label>Właściciel karty</label>
+                      <input class="form-control" placeholder="Właściciel karty" type="text"/>
                     </div>
                   </div>
                 </div>
@@ -143,8 +143,8 @@
             </div>
             <div class="card-footer">
               <div class="row">
-                <div class="col-xs-12">
-                  <button class="btn btn-warning btn-lg btn-block" (click)="onProcessPayment()">Process payment</button>
+                <div class="col">
+                  <button class="btn btn-warning btn-block" (click)="onProcessPayment()">Zapłać</button>
                 </div>
               </div>
             </div>
@@ -152,21 +152,21 @@
         </div>
       </div>
       <div *ngIf="paymentSuccessful">
-        Payment successful!
+        Pomyślne zakończenie płatności!
       </div>
       <div>
-        <button class="btn btn-secondary" mat-button matStepperPrevious>Back</button>
-        <button class="btn btn-success" mat-button matStepperNext>Finish order</button>
+        <button class="btn btn-secondary mr-2" mat-button matStepperPrevious>Wstecz</button>
+        <button class="btn btn-success" mat-button matStepperNext>Zakończenie zamówienia</button>
       </div>
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Finish order</ng-template>
-    <p>You are now all set up.</p>
+    <ng-template matStepLabel>Zakończenie zamówienia</ng-template>
+    <p>Wszystkie dane zostały uzupełnione</p>
     <div>
-      <button (click)="onSubmitOrder()" class="btn btn-success">Submit order</button>
-      <button class="btn btn-secondary" mat-button matStepperPrevious>Back</button>
-      <button (click)="stepper.reset()" class="btn btn-danger" mat-button>Reset</button>
+      <button (click)="onSubmitOrder()" class="btn btn-success" style="width: 150px; height: 40px;">Złóż zamówienie</button>
+      <button class="btn btn-secondary mx-2" mat-button matStepperPrevious style="width: 150px; height: 40px;">Wstecz</button>
+      <button (click)="stepper.reset()" class="btn btn-danger" mat-button style="width: 150px; height: 40px;">Reset</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

@@ -15,10 +15,10 @@
       </h5>
     </h3>
     <h4 class="mb-2">
-      {{product.price}} PLN
+      {{product.price}} zł
     </h4>
     <h5>
-      <p class="my-1">Zniżka: {{product.discount}} PLN</p>
+      <p class="my-1">Zniżka: {{product.discount}} zł</p>
       <p class="my-1">Na magazynie: {{product.items_left}} sztuk</p>
       <p class="my-1">Oferta ważna do: {{product.expiration_timestamp}}</p>
     </h5>
@@ -72,7 +72,7 @@
               <option [ngValue]="5">5</option>
             </select>
             <div *ngIf="submitted && f.rating.errors" class="invalid-feedback">
-              <div *ngIf="f.rating.errors.required">Rating field is required</div>
+              <div *ngIf="f.rating.errors.required">Podaj ocene</div>
             </div>
           </div>
           <div class="form-row col">
@@ -80,7 +80,7 @@
             <input type="text" formControlName="comment" class="form-control"
                    [ngClass]="{ 'is-invalid': submitted && f.comment.errors }">
             <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
-              <div *ngIf="f.comment.errors.required">Comment field is required</div>
+              <div *ngIf="f.comment.errors.required">Podaj komentarz</div>
             </div>
           </div>
           <div class="submit col">

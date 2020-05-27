@@ -9,7 +9,7 @@
       </div>
 
       <div class="col-6 d-flex justify-content-center" style="padding: 0">
-        <label style="display: inline">Search by name:</label>
+        <label style="display: inline">Szukaj po nazwie:</label>
         <p-autoComplete
           (completeMethod)="searchByPartialName($event)"
           (onSelect)="navigateToProduct()"
@@ -40,8 +40,8 @@
       </div>
 
       <div class="col-2 d-inline-block">
-        <a style="display: inline" *ngIf="!isUserLoggedIn()" class="text-dark nav-link enabled" routerLink="/login">Login</a>
-        <a style="display: inline" *ngIf="!isUserLoggedIn()" class="text-dark nav-link enabled" routerLink="/register">Register</a>
+        <a style="display: inline" *ngIf="!isUserLoggedIn()" class="text-dark nav-link enabled" routerLink="/login">Logowanie</a>
+        <a style="display: inline" *ngIf="!isUserLoggedIn()" class="text-dark nav-link enabled" routerLink="/register">Rejestracja</a>
         <a style="display: inline" *ngIf="isUserLoggedIn()" class="text-dark nav-link enabled"
            routerLink="/" (click)="logOut()" >
           <i class="fa fa-sign-out fa-2x"></i>
