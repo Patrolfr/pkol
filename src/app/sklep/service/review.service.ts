@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {SERVER_ADDRESS} from './data.service';
 
-export const SEND_REVIEW_URL = 'http://137.135.245.109:8000/users/review/';
+export const SEND_REVIEW_URL = SERVER_ADDRESS + '/users/review/';
 export const PRODUCT_REVIEWS_URL = SEND_REVIEW_URL + '?product=';
 
 @Injectable({

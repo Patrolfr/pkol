@@ -4,13 +4,14 @@ import {Category} from '../domain/model/category.model';
 import {CategoryService} from './category.service';
 import {Product} from '../domain/model/product.model';
 import {ProductService} from './product.service';
+import {environment} from '../../../environments/environment';
 
-export const SERVER_URL = 'http://137.135.245.109:8000/products';
-export const CATEGORY_URL = SERVER_URL + '/category';
-export const SUBCATEGORY_URL = SERVER_URL + '/subcategory';
-export const PRODUCT_URL = SERVER_URL + '/product';
+export const SERVER_ADDRESS = environment.SERVER_URL;
+export const PRODUCTS_URL = SERVER_ADDRESS + '/products';
+export const CATEGORY_URL = PRODUCTS_URL + '/category';
+export const SUBCATEGORY_URL = PRODUCTS_URL + '/subcategory';
+export const PRODUCT_URL = PRODUCTS_URL + '/product';
 
-const GET_REQUEST_OPTIONS = {observe: 'body', responseType: 'json'};
 
 @Injectable()
 export class DataService {

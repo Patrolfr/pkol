@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-start',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    console.log('app runs with env configuration: ' + environment.name);
   }
 
 }

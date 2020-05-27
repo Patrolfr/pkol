@@ -4,10 +4,11 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {User} from '../models/user';
 import * as jwt_decode from 'jwt-decode';
+import {SERVER_ADDRESS} from './data.service';
 
-export const LOGIN_URL = 'http://137.135.245.109:8000/api/token/';
-export const REGISTRATION_URL = 'http://137.135.245.109:8000/users/user/';
-export const USER_URL = 'http://137.135.245.109:8000/users/user/';
+export const LOGIN_URL = SERVER_ADDRESS + '/api/token/';
+export const REGISTRATION_URL = SERVER_ADDRESS + '/users/user/';
+export const USER_URL = SERVER_ADDRESS + '/users/user/';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
