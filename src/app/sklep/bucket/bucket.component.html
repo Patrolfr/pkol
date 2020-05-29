@@ -1,5 +1,5 @@
 <h2 class="text-center">Koszyk</h2>
-<div class="row">
+<div>
   <!--  todo make it another compoenet -->
   <div *ngFor="let entry of bucketEntries | async;">
     <div class="row mb-0">
@@ -34,14 +34,14 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col col-md-6">
     <h3>Podsumowanie koszyka: </h3>
     <h4>Liczba produktów: {{ (bucketEntries | async).length}}</h4>
     <h4>Cena: {{totalCostInPln | async}} zł</h4>
     <h4>Zniżka: {{totalDiscountInPln | async}} zł</h4>
     <h4 style="color: green">Ostateczna cena: {{((totalCostInPln | async) - (totalDiscountInPln | async)).toFixed(2)}} zł</h4>
   </div>
-  <div class="col-xs-6" style="margin-left: 200px">
+  <div class="col col-md-6">
     <div *ngIf="(bucketEntries | async).length <= 0">
       Koszyk jest pusty..
     </div>
