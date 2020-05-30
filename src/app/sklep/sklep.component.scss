@@ -1,0 +1,11 @@
+@media only screen and (max-width: 580px) {
+    .container {
+      margin-top: 170px;
+    }
+  }
+
+  @media only screen and (min-width: 581px) {
+    .container {
+      margin-top: 80px;
+    }
+  }
