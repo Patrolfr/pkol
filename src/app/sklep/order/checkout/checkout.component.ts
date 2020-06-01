@@ -6,6 +6,8 @@ import {Store} from '@ngrx/store';
 import {DeliveryType} from '../../domain/model/delivery-type.model';
 import {OrderService} from '../../service/order.service';
 import {PaymentType} from '../../domain/model/payment-type.model';
+import {OrderSubmitted} from '../../ngRx-store/bucket.actions';
+import {BucketEventsEmitter} from '../../service/bucket-events-emitter';
 
 @Component({
   selector: 'app-checkout',
@@ -31,7 +33,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
               private store: Store<AppState>,
-              private orderService: OrderService) {
+              private orderService: OrderService,
+              private bucketEventsEmitter: BucketEventsEmitter) {
   }
 
   ngOnInit() {
@@ -75,6 +78,10 @@ export class CheckoutComponent implements OnInit {
         })
       }
     ).subscribe(response => {
+      this.store.dispatch(new OrderSubmitted());
+      this.bucketEventsEmitter.emit(new OrderSubmitted());
+    }, error => {
+      console.log('error when addin');
     });
   }
 

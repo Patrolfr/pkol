@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BucketEventsEmitter} from '../../service/bucket-events-emitter';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {AddProduct} from '../../ngRx-store/bucket.actions';
+import {ADD_PRODUCT, BucketActions, REMOVE_PRODUCT, SUBMIT_ORDER} from '../../ngRx-store/bucket.actions';
 
 @Component({
   selector: 'app-footer',
@@ -13,9 +13,17 @@ export class FooterComponent implements OnInit {
   constructor(private emitter: BucketEventsEmitter,
               private _snackBar: MatSnackBar) {
 
-    this.emitter.subscribe(action => {
-      if (action instanceof AddProduct) {
-        this.showSuccessBar(action.payload.amount);
+    this.emitter.subscribe((action: BucketActions) => {
+      switch (action.type) {
+        case ADD_PRODUCT:
+          this.showSuccessfulBar('Dodano produkt do koszyka, sztuk: ' + action.payload.amount + '.');
+          break;
+        case REMOVE_PRODUCT:
+          this.showDangerBar('Usunięto produkt z koszyka.');
+          break;
+        case SUBMIT_ORDER:
+          this.showSuccessfulBar('Zamówienie zostało przyjęte do realizacji.');
+          break;
       }
     });
   }
@@ -23,16 +31,28 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showSuccessBar(count: number) {
-    this.openSnackBar('Dodano produkt do koszyka, sztuk: ' + count, null);
+  showSuccessfulBar(text: string) {
+    this.openGreenSnackBar(text);
   }
 
-  openSnackBar(message: string, action: string) {
+  showDangerBar(text: string) {
+    this.openRedSnackBar(text);
+  }
+
+  openGreenSnackBar(message: string) {
+    this.openSnackBar(message, null, 'green-snackbar');
+  }
+
+  openRedSnackBar(message: string) {
+    this.openSnackBar(message, null, 'red-snackbar');
+  }
+
+  openSnackBar(message: string, action: string, panelClass: string) {
     this._snackBar.open(
       message,
       action,
       {
-        panelClass: ['green-snackbar'],
+        panelClass: [panelClass],
         duration: 2000,
       }
     );

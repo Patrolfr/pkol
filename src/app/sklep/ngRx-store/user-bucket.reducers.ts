@@ -1,5 +1,5 @@
 import {Product} from '../domain/model/product.model';
-import {ADD_PRODUCT, AddProduct, BucketActions, REMOVE_PRODUCT, RemoveProduct} from './bucket.actions';
+import {ADD_PRODUCT, AddProduct, BucketActions, REMOVE_PRODUCT, RemoveProduct, SUBMIT_ORDER} from './bucket.actions';
 
 export class BucketEntry {
   constructor(public product: Product,
@@ -100,6 +100,8 @@ export function bucketReducer(state: BucketState = initialState, action: BucketA
         totalDiscountInPln: totalDiscountInPln,
         totalAmount: totalAmount,
       };
+    case SUBMIT_ORDER:
+      return initialState;
     default:
       return state;
   }

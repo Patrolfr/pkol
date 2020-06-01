@@ -3,6 +3,7 @@ import {Product} from '../domain/model/product.model';
 
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
+export const SUBMIT_ORDER = 'SUBMIT_ORDER';
 
 export class AddProduct implements Action {
   type: string = ADD_PRODUCT;
@@ -18,5 +19,12 @@ export class RemoveProduct implements Action {
   }
 }
 
+export class OrderSubmitted implements Action {
+  type: string = SUBMIT_ORDER;
+  public payload: any;
 
-export type BucketActions = AddProduct | RemoveProduct;
+  constructor() {
+  }
+}
+
+export type BucketActions = AddProduct | RemoveProduct | OrderSubmitted;
