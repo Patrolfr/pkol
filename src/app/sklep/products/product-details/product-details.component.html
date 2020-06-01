@@ -25,28 +25,24 @@
     <p [textContent]="product.description" class="card-text"></p>
   </div>
   <div class="card-footer">
-    <form #productsAmountForm="ngForm" (ngSubmit)="onSubmitItem()">
+    <form [formGroup]="inputForm" (ngSubmit)="onSubmitItem()">
       <div class="d-flex">
 
-          <label for="amount" class="form-control" style="width: 80px;">Sztuk</label>
+        <label for="productAmount" class="form-control" style="width: 80px;">Sztuk</label>
 
-          <input
-            style="width: 80px;"
-            class="form-control mx-2"
-            id="amount"
-            name="amount"
-            ngModel
-            pattern="^[1-9]+[0-9]*$"
-            required
-            type="number"
-          >
+        <input
+          type="number"
+          id="productAmount"
+          formControlName="productAmount"
+          style="width: 80px;"
+          class="form-control mx-2">
 
-          <button
-            [disabled]="productsAmountForm.invalid"
-            class="btn btn-success btn-block"
-            style="height: 38px;"
-            type="submit">Dodaj do koszyka!
-          </button>
+        <button
+          [disabled]="inputForm.invalid"
+          class="btn btn-success btn-block"
+          style="height: 38px;"
+          type="submit">Dodaj do koszyka!
+        </button>
 
       </div>
     </form>
