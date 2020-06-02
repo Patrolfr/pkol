@@ -9,6 +9,7 @@ import {LoginComponent} from './authentication/login/login.component';
 import {RegistrationComponent} from './authentication/registration/registration.component';
 import {CheckoutComponent} from './order/checkout/checkout.component';
 import {UserProfileComponent} from './user/user-profile/user-profile.component';
+import {ProductReviewComponent} from "./products/product-review/product-review.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductDetailsComponent
+  },
+  {
+    path: 'product/review/:id',
+    component: ProductReviewComponent
   },
   {
     path: 'bucket',

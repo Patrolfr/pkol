@@ -23,7 +23,6 @@ export class ProductDetailsComponent implements OnInit {
   public reviews: Review[] = [];
   reviewForm: FormGroup;
   submitted = false;
-  public newReview: Review;
 
   constructor(private route: ActivatedRoute,
               public authenticationService: AuthenticationService,
