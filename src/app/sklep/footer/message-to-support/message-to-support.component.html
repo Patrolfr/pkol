@@ -12,46 +12,36 @@
 <div *ngIf="isMessageToShort" class="alert alert-danger" role="alert">
   Minimalna dlugość wiadomości nie została osiągnięta.
 </div>
+
 <form>
-  <div class="form-group row">
-    <label for="text1" class="col-4 col-form-label">Twój nickname</label>
-    <div class="col-8">
-      <input [disabled]="true" value="{{userNickName}}" id="text1" name="text2" type="text" class="form-control">
+  <div class="input-group input-group-lg mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <i class="fas fa-user"></i>
+      </span>
     </div>
+    <input type="text" class="form-control" placeholder="Imie i nazwisko">
   </div>
-  <div class="form-group row">
-    <label for="text2" class="col-4 col-form-label">Twoje imie</label>
-    <div class="col-8">
-      <input [disabled]="true" value="{{userFirstName}}" id="text2" name="text2" type="text" class="form-control">
+
+  <div class="input-group input-group-lg mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <i class="fas fa-envelope"></i>
+      </span>
     </div>
+    <input type="text" class="form-control" placeholder="Email">
   </div>
-  <div class="form-group row">
-    <label for="text2" class="col-4 col-form-label">Twoje nazwisko</label>
-    <div class="col-8">
-      <input [disabled]="true" value="{{userLastName}}" id="text3" name="text2" type="text" class="form-control">
+
+  <div class="input-group input-group-lg mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <i class="fas fa-pencil-alt"></i>
+      </span>
     </div>
+    <textarea class="form-control" placeholder="Wiadomość" rows="5"></textarea>
   </div>
-  <div class="form-group row">
-    <label for="text2" class="col-4 col-form-label">Twój email</label>
-    <div class="col-8">
-      <input [disabled]="true" value="{{userEmail}}" id="text4" name="text2" type="text" class="form-control">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="textarea" class="col-4 col-form-label">Wiadomość</label>
-    <div class="col-8">
-      <textarea [(ngModel)]="message.content" id="textarea" name="textarea" cols="60" rows="10"
-                class="form-control"></textarea>
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="offset-4 col-8">
-      <button [disabled]="!isLogged" (click)="sendMessage()" name="submit" type="submit" class="btn btn-primary mb-2">
-        Wyślij
-      </button>
-      <button *ngIf="isLogged" (click)="sendMessage()" routerLink="/ftr/myMessages" name="submit" type="submit" class="btn btn-success messages-button">
-        Moje wiadomości
-      </button>
-    </div>
-  </div>
+
+  <input type="submit" value="Wyślij" class="btn btn-success btn-block btn-lg">
 </form>
+
+ 
