@@ -17,6 +17,7 @@ export class MessageToSupportComponent implements OnInit {
   userNickName: string;
   userFirstName: string;
   userLastName: string;
+  userName: string;
   userEmail: string;
   message: Message;
   isMessageToShort: boolean;
@@ -45,26 +46,35 @@ export class MessageToSupportComponent implements OnInit {
   }
 
   sendMessage() {
-    this.message.fromUser = true;
-    if (this.message.content.length < MESSAGE_MIN_LENGTH) {
-      this.isMessageToShort = true;
-      setTimeout(function() {
-        this.isMessageToShort = false;
-      }.bind(this), 3000);
-    }else {
-      this.messageService.sendMessage(this.message).subscribe(value => {
-        this.message.content ='';
-        this.isSuccess = true;
-        setTimeout(function() {
-          this.isSuccess = false;
-        }.bind(this), 10000);
-      },error => {
-        this.isError = true;
-        setTimeout(function() {
-          this.isError = false;
-        }.bind(this), 5000);
-      });
+    if (this.isLogged) {
+      this.message.fromUser = true;
+      if (this.message.content.length < MESSAGE_MIN_LENGTH) {
+        this.isMessageToShort = true;
+        setTimeout(function () {
+          this.isMessageToShort = false;
+        }.bind(this), 3000);
+      } else {
+        this.messageService.sendMessage(this.message).subscribe(value => {
+          this.message.content = '';
+          this.isSuccess = true;
+          setTimeout(function () {
+            this.isSuccess = false;
+          }.bind(this), 5000);
+        }, error => {
+          this.isError = true;
+          setTimeout(function () {
+            this.isError = false;
+          }.bind(this), 5000);
+        });
+      }
+    } else {
+      this.prepareEmail()
     }
+
+
+  }
+
+  prepareEmail() {
 
   }
 }

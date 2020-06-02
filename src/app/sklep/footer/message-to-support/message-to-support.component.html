@@ -2,9 +2,6 @@
 <div *ngIf="isSuccess" class="alert alert-success" role="alert">
   Dziękujemy za wysłanie wiadomości, odpowiemy na nią najszybciej jak się da.
 </div>
-<div *ngIf="!isLogged" class="alert alert-danger" role="alert">
-  Przepraszamy ale musisz być zalogowany aby wysłać wiadomość.
-</div>
 <div *ngIf="isError" class="alert alert-danger" role="alert">
   Przepraszamy coś poszło nie tak, spróbuj ponownie wysłać wiadomości, a jeżeli problem będzie się
   powtarzał skontaktuj się bezpośrednio z administartorem.
@@ -20,7 +17,7 @@
         <i class="fas fa-user"></i>
       </span>
     </div>
-    <input type="text" class="form-control" placeholder="Imie i nazwisko">
+    <input [ngModel]="userName"  type="text" class="form-control" placeholder="Imie i nazwisko">
   </div>
 
   <div class="input-group input-group-lg mb-3">
@@ -29,7 +26,7 @@
         <i class="fas fa-envelope"></i>
       </span>
     </div>
-    <input type="text" class="form-control" placeholder="Email">
+    <input [ngModel]="userEmail" type="text" class="form-control" placeholder="Email">
   </div>
 
   <div class="input-group input-group-lg mb-3">
@@ -38,10 +35,10 @@
         <i class="fas fa-pencil-alt"></i>
       </span>
     </div>
-    <textarea class="form-control" placeholder="Wiadomość" rows="5"></textarea>
+    <textarea [ngModel]="message.content" class="form-control" placeholder="Wiadomość" rows="5"></textarea>
   </div>
 
-  <input type="submit" value="Wyślij" class="btn btn-success btn-block btn-lg">
+  <input (click)="sendMessage()" type="submit" value="Wyślij" class="btn btn-success btn-block btn-lg">
 </form>
 
- 
+
