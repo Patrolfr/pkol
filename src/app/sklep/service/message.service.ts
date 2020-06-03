@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpBackend, HttpClient, HttpHeaders} from '@angular/common/http';
 import {Message} from '../models/message';
-import {Observable} from 'rxjs';
+import {from, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {MessageSerialzier} from '../serializers/message.serialzier';
 import {SERVER_ADDRESS} from './data.service';
@@ -13,11 +13,19 @@ const MESSAGE_URL = SERVER_ADDRESS + '/users/messages/';
 })
 export class MessageService {
   messages: Message[];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private handler: HttpBackend) { }
 
 
   sendMessage(message: Message): Observable<Object>{
     return this.http.post(MESSAGE_URL, message);
+  }
+
+  sendMessageUserNotLogged(message: Message): Observable<any>{
+    let customHttpClient = new HttpClient(this.handler);
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', 'Basic c3VwZXI6YXNk');
+
+    return customHttpClient.post(MESSAGE_URL, message, { headers: headers});
   }
 
   getMessages(){
