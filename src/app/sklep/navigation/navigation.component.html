@@ -36,9 +36,14 @@
           <a *ngIf="isUserLoggedIn()" class="text-light" (click)="openChat()">
             <i class="fas fa-comment-medical fa-2x mr-3"></i>
           </a>
-          <a *ngIf="isUserLoggedIn()" class="text-light" routerLink="/profile">
+          <div class="dropdown" *ngIf="isUserLoggedIn()">
             <i class="far fa-user fa-2x"></i>
-          </a>
+            <div class="dropdown-content">
+              <a routerLink="/profile">Moje zamówienia</a>
+              <a routerLink="/ftr/myMessages">Moje wiadomości</a>
+              <a routerLink="ftr/contactUs">Wyślij zapytanie</a>
+            </div>
+          </div>
           <a style="display: inline" *ngIf="!isUserLoggedIn()" class="text-light nav-link enabled" routerLink="/login"><i class="fa fa-sign-out fa-2x"></i></a>
           <a style="display: inline" *ngIf="!isUserLoggedIn()" class="text-light nav-link enabled" routerLink="/register"><i class="fas fa-user-plus fa-2x"></i></a>
           <a style="display: inline" *ngIf="isUserLoggedIn()" class="text-light nav-link enabled"
