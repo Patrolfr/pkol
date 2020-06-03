@@ -32,6 +32,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {ChatBotOverlayService} from './service/chat-bot-overlay.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {BucketEventsEmitter} from './service/bucket-events-emitter';
+import { ProductReviewComponent } from './products/product-review/product-review.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
@@ -49,6 +52,7 @@ import {BucketEventsEmitter} from './service/bucket-events-emitter';
     CheckoutComponent,
     UserProfileComponent,
     OrderDetailsComponent,
+    ProductReviewComponent,
   ],
   exports: [
     SklepComponent
@@ -63,7 +67,9 @@ import {BucketEventsEmitter} from './service/bucket-events-emitter';
     MatFormFieldModule,
     MatButtonModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [
     DataService,

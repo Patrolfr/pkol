@@ -11,6 +11,7 @@
       <th scope="col">Metoda płatności</th>
       <th scope="col">Dostawa</th>
       <th scope="col">Suma[zł]</th>
+      <th scope="col">Dodaj komentarz</th>
     </tr>
     </thead>
     <tbody>
@@ -22,6 +23,23 @@
       <td>{{ getPaymentTypeById(order.payment_type) }}</td>
       <td>{{ getDeliveryTypeById(order.delivery_type) }}</td>
       <td>{{ order.total_price }}</td>
+      <td>
+        <mat-menu #appMenu="matMenu">
+          <div *ngFor="let product of order.products">
+            <button mat-menu-item routerLink="/product/review/{{product.id}}">
+              {{(product.name > 15)? (product.name | slice:0:15)+'...':(product.name) }}
+            </button>
+          </div>
+        </mat-menu>
+
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+
+<!--        <button mat-icon-button disabled aria-label="Redirect icon">-->
+<!--          <mat-icon routerLink="/product/review/{{order.id}}">open_in_new</mat-icon>-->
+<!--        </button>-->
+      </td>
     </tr>
     </tbody>
   </table>
