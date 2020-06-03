@@ -16,7 +16,7 @@
           <div class="form-row col">
             <label class="col">Ocena</label>
             <select formControlName="rating" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.rating.errors }">
+                    [ngClass]="{ 'is-invalid': submitted && reviewForm.controls.rating.errors }">
               <option [ngValue]=""></option>
               <option [ngValue]="1">1</option>
               <option [ngValue]="2">2</option>
@@ -24,16 +24,16 @@
               <option [ngValue]="4">4</option>
               <option [ngValue]="5">5</option>
             </select>
-            <div *ngIf="submitted && f.rating.errors" class="invalid-feedback">
-              <div *ngIf="f.rating.errors.required">Podaj ocene</div>
+            <div *ngIf="submitted && reviewForm.controls.rating.errors" class="invalid-feedback">
+              <div *ngIf="reviewForm.controls.rating.errors.required">Podaj ocene</div>
             </div>
           </div>
           <div class="form-row col">
             <label class="mt-2">Komentarz</label>
             <input type="text" formControlName="comment" class="form-control"
-                   [ngClass]="{ 'is-invalid': submitted && f.comment.errors }">
-            <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
-              <div *ngIf="f.comment.errors.required">Podaj komentarz</div>
+                   [ngClass]="{ 'is-invalid': submitted && reviewForm.controls.comment.errors }">
+            <div *ngIf="submitted && reviewForm.controls.comment.errors" class="invalid-feedback">
+              <div *ngIf="reviewForm.controls.comment.errors.required">Podaj komentarz</div>
             </div>
           </div>
           <div class="submit col">

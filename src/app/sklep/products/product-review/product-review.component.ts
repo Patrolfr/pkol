@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AuthenticationService} from '../../service/authentication.service';
 import {ProductService} from '../../service/product.service';
@@ -16,14 +16,15 @@ export class ProductReviewComponent implements OnInit {
   public reviews: Review[] = [];
   reviewForm: FormGroup;
   submitted = false;
-  private productId: number = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-  private product: Product;
+  public productId: number = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+  public product: Product;
 
   constructor(private route: ActivatedRoute,
               public authenticationService: AuthenticationService,
               private productService: ProductService,
               private reviewService: ReviewService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
 
