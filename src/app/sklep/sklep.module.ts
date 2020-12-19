@@ -1,4 +1,4 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import {APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SklepRoutingModule} from './sklep-routing.module';
 import {ProtectedComponent} from './protected/protected.component';
@@ -79,7 +79,8 @@ import {MatMenuModule} from "@angular/material/menu";
     OrderService,
     ChatBotOverlayService,
     BucketEventsEmitter,
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SklepModule {
 }
