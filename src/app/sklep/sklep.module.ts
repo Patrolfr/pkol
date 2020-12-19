@@ -79,11 +79,6 @@ import {MatMenuModule} from "@angular/material/menu";
     OrderService,
     ChatBotOverlayService,
     BucketEventsEmitter,
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {provide: APP_INITIALIZER, useFactory: initializeCategories, deps: [DataService, CategoryService], multi: true},
-    {provide: APP_INITIALIZER, useFactory: initializeProducts, deps: [DataService, CategoryService], multi: true},
-    {provide: APP_INITIALIZER, useFactory: initializeOrderTypes, deps: [OrderService], multi: true}
   ]
 })
 export class SklepModule {
