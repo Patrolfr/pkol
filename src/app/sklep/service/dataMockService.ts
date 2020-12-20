@@ -1,35 +1,35 @@
 import {Category} from '../domain/model/category.model';
+import {Product} from "../domain/model/product.model";
 
 export class DataMockService {
 
   private categories: Category[] = [
-    new Category(0, 'TELEFONY', 0, null),
-    new Category(1, 'TELEWIZORY', 0, null),
-    new Category(2, 'RĘCZNIKI', 0, null),
-    new Category(3, 'TRAKTORY', 0, null),
-    new Category(4, 'DONICZKI', 0, null),
-    new Category(5, 'JEDZENIE', 0, null),
-    new Category(6, 'AI & MACHINE LEARNING', 0, null),
-    new Category(7, 'MOCK MOCK', 0, null),
-    new Category(8, 'FAKE_FAKE', 0, null)
+    new Category(0, 'KOMPUTERY', 0, null),
+    new Category(1, 'SERWERY', 1, null),
+    new Category(2, 'TELEFONY', 2, null),
+    new Category(3, 'MONITORY', 3, null),
   ];
 
-  private mockImage1 = 'https://picsum.photos/200/300';
-  private mockDesription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+  private products: Product[] = [
+    //TV
+    new Product(0, 'Samsung 4k fhd qa', 3, 555, 'src\\assets\\data-base\\monitor_samsung_1.jpg', 0, 'Najlepszy monitor', false, 1109, '2022-01-02'),
+    new Product(1, 'Sony 4k', 3, 999, 'src\\assets\\data-base\\monitor_sony_2.jpg', 0, 'Super monitor', false, 4555, '2022-01-02'),
+    new Product(2, 'Samsung 8k', 3, 500, 'src\\assets\\data-base\\monitor_samsung_3.jpg', 0, 'Dobry monitor.', false, 5444, '2022-01-02'),
+    new Product(3, 'Lenovo good TV', 3, 799, 'src\\assets\\data-base\\monitor_lenovo_4.jpg', 0, 'Wyświetla kolory!', false, 7222, '2022-01-02'),
+    //PC
+    new Product(4, 'MAC', 0, 12999, 'src\\assets\\data-base\\PC_1.png', 0, 'W promocji - jabłko gratis!', false, 90, '2022-01-02'),
+    new Product(5, 'Custom PC dysk tysionc!', 0, 5000, 'src\\assets\\data-base\\PC_2.jpg', 0, 'Ma duży dysk i w ogóle.', false, 1022, '2022-01-02'),
+    new Product(6, 'Komputer gejmingowy', 0, 3000, 'src\\assets\\data-base\\PC_3.jpg', 0, 'Można grać w gry, w cyberpunku pokazuje bugi jakich inny komputer nie pokaże!', false, 102, '2022-01-02'),
+    //SERVERS
+    new Product(7, 'ThinkSystem St550', 1, 10999, 'src\\assets\\data-base\\serv_1.jpg', 0, 'Szypki i sprawny serwer!', false, 46, '2022-01-02'),
+    new Product(8, 'Wavew SG Mobile Server', 1, 1200, 'src\\assets\\data-base\\serv_2.jpg', 0, 'Mały server 4GB ramu i ma nawet procesor.', false, 257, '2022-01-02'),
+    new Product(9, 'Matrix serwer', 1, 3000, 'src\\assets\\data-base\\serv_3.png', 0, 'Duży taki.', false, 32, '2022-01-02'),
+    //PHONES
+    new Product(7, 'IPhone 12 64GB czarny', 2, 4999, 'src\\assets\\data-base\\phone_1.jpg', 0, 'Telefon IPhone 12, w zestawie jabłko.', false, 1000, '2022-01-02'),
+    new Product(8, 'Samsung galaxy s10', 2, 2900, 'src\\assets\\data-base\\phone_2.png', 0, 'Dobry samsung, działa. Bateria nie wybucha.', false, 997, '2022-01-02'),
+    new Product(9, 'Xiaomi redmi note 9', 2, 1000, 'src\\assets\\data-base\\phone_3.jpg', 0, 'Xiaomi to xiaomi, działa, tańszy, ale nie ma loga samsunga ani apla.', false, 1382, '2022-01-02'),
+  ];
 
-  // private productsTvs: Product[] = [
-  //   new Product(0, 'Projector 4k fhd qa', 1, 4555, this.mockImage1, 199, this.mockDesription,  false, 11, '2020-01-02'),
-  //   new Product(1, 1, this.mockDesription, 11, '2020-01-02', this.mockImage1, false, 'Ed, Edd & Eddie TV1', 4555, 199),
-  //   new Product(2, 1, this.mockDesription, 12, '2020-01-03', this.mockImage1, false, 'Super ED TV2', 5444, 99),
-  //   new Product(3, 1, this.mockDesription, 14, '2020-01-05', this.mockImage1, false, 'Super OLED TV4', 7222, 12),
-  // ];
-  //
-  // private towels: Product[] = [
-  //   new Product(4, 2, this.mockDesription, 1, null, this.mockImage1, false, 'Towel cotton', 55, 1199),
-  //   new Product(5, 2, this.mockDesription, 2, null, this.mockImage1, false, 'Towel plastic', 12, 990),
-  //   new Product(6, 2, this.mockDesription, 3, null, this.mockImage1, false, 'Towel poliester', 11, 533),
-  //   new Product(7, 2, this.mockDesription, 4, null, this.mockImage1, false, 'Towel towel towel xyz', 1010, 112),
-  // ];
 
   // private allProducts: Product[] = this.productsTvs.slice().concat(this.towels.slice());
 
