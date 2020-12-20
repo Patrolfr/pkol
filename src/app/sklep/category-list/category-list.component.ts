@@ -24,6 +24,7 @@ export class CategoryListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.categories = this.dataServiceMock.getCategories();
+    this.subcategories = this.dataServiceMock.getCategories();
   }
 
   ngOnDestroy(): void {

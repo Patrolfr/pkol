@@ -29,8 +29,4 @@ export class ProductService {
     this.allProducts = newProducts;
     this.productsChanged.next(this.allProducts);
   }
-
-
-
-
 }

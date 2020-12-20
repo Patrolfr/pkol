@@ -32,8 +32,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "https://stpc.pkoleasing.pl/leasing/assets/widget/pkol- installment-widget.js",
-              "https://stpc.pkoleasing.pl/leasing/assets/widg et/pkol-installment-widget-styles.css"
+              "https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget.js",
+              "https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget-styles.css"
             ]
           },
           "configurations": {

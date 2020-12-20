@@ -33,6 +33,10 @@ export class DataMockService {
 
   // private allProducts: Product[] = this.productsTvs.slice().concat(this.towels.slice());
 
+  public getProducts(): Product[] {
+    return this.products;
+  }
+
   public getCategories(): Category[] {
     return this.categories;
   }

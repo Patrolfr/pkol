@@ -14,12 +14,9 @@ import {BucketComponent} from './bucket/bucket.component';
 import {DataService} from './service/data.service';
 import {CategoryService} from './service/category.service';
 import {DataMockService} from './service/dataMockService';
-import {initializeCategories, initializeOrderTypes, initializeProducts} from '../app-init';
+import {initializeCategories, initializeProducts} from '../app-init';
 import {ProductService} from './service/product.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {JwtInterceptor} from './interceptor/auth.interceptor';
-import {ErrorInterceptor} from './interceptor/error.interceptor';
 import {CheckoutComponent} from './order/checkout/checkout.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -32,9 +29,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {ChatBotOverlayService} from './service/chat-bot-overlay.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {BucketEventsEmitter} from './service/bucket-events-emitter';
-import { ProductReviewComponent } from './products/product-review/product-review.component';
-import {MatIconModule} from "@angular/material/icon";
-import {MatMenuModule} from "@angular/material/menu";
+import {ProductReviewComponent} from './products/product-review/product-review.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -79,6 +76,8 @@ import {MatMenuModule} from "@angular/material/menu";
     OrderService,
     ChatBotOverlayService,
     BucketEventsEmitter,
+    {provide: APP_INITIALIZER, useFactory: initializeCategories, deps: [DataService, CategoryService], multi: true},
+    {provide: APP_INITIALIZER, useFactory: initializeProducts, deps: [DataService, CategoryService], multi: true}
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
