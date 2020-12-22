@@ -3,58 +3,53 @@
 <head>
   <title>PKO Leasing Widget DEMO</title>
 </head>
-<link href="https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget-styles.css" rel="stylesheet"
+<link href="https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget-styles.css"
+      rel="stylesheet"
       type="text/css"/>
 <body>
 <div style="margin-top: 30px">
-  <pkol-installment-widget
-    api_url="https://stpc.pkoleasing.pl" leasing_form_id="pko-leasing-form" product_1_category_id="1001"
-    product_1_quantity="1" shop_id="573278292" total_net_value="155399.12"
-    unique_item_quantity="3"
-    widget_style="1">
-  </pkol-installment-widget>
+  widget1
+    <pkol-installment-widget
+      api_url="https://stpc.pkoleasing.pl"
+      leasing_form_id="pko-leasing-form"
+      product_1_category_id="1001"
+      product_1_quantity="1"
+      shop_id="573278292"
+      total_net_value="1711,12"
+      unique_item_quantity="1"
+      widget_style="1">
+    </pkol-installment-widget>
 </div>
+
 <div style="margin-top: 30px">
-  <pkol-installment-widget 18 api_url="https://stpc.pkoleasing.pl " leasing_form_id="pko-leasing-form" shop_id="573278292"
-    widget_style="2"
-  ></pkol-installment-widget>
+  widget1
+  <pkol-installment-widget
+    api_url="https://stpc.pkoleasing.pl"
+    leasing_form_id="pko-leasing-form"
+    shop_id="573278292"
+    widget_style="2">
+  </pkol-installment-widget>
 </div>
 <div style="display: none;">
   <form id="pko-leasing-form" method="POST">
-    <input id="returnLink" name="returnLink" value="http://localhost:4200">
+    <input id="returnLink" name="returnLink" value="https://morele.net">
     <input id="shopName" name="shopName" value="X-Shop PW">
     <input id="shopId" name="shopId" value="573278292">
     <input id="orderId" name="orderId" value="2asf-2q34nvg-asd234">
     <input id="source" name="source" value="order">
-    <input id="productName" name="productName1" value="Samsung Galaxy S6 Edge Plus G928F 64GB">
+
+    <input id="productName1" name="productName1" value="Samsung Galaxy S6 Edge Plus G928F 64GB">
     <input id="productQuantity1" name="productQuantity1" value="2">
     <input id="productPrice1" name="productPrice1" value="2104,68">
     <input id="productNetPrice1" name="productNetPrice1" value="1711,12">
     <input id="productAvatarUrl1" name="productAvatarUrl1"
-           value="https://image.ceneostatic.pl/data/products/39673391/i-samsung-galaxy-s6- edge-plus-g928f-64gb-czarny.jpg">
+           value="https://image.ceneostatic.pl/data/products/39673391/i-samsung-galaxy-s6-edge-plus-g928f-64gb-czarny.jpg">
     <input id="productCategory1" name="productCategory1" value="1001">
     <input id="productVatRate1" name="productVatRate1" value="3">
-    <input id="productName2" name="productName2" value="XIAOMI MIJIA ROBOROCK S6">
-    <input id="productQuantity2" name="productQuantity2" value="3">
-    <input id="productPrice2" name="productPrice2" value="1500,00">
-    <input id="productNetPrice2" name="productNetPrice2" value="1219,51">
-    <input id="productAvatarUrl2" name="productAvatarUrl2"
-           value="https://image.ceneostatic.pl/data/products/82908101/i-roborock-s6- czarny.jpg">
-    <input id="productCategory2" name="productCategory2" value="1001"> <input id="productVatRate2"
-                                                                              name="productVatRate2" value="5">
-    <input id="productName3" name="productName3" value="Smartfon APPLE iPhone 11 64GB Czarny MWLT2PM/A">
-    <input id="productQuantity3" name="productQuantity3" value="1">
-    <input id="productPrice3" name="productPrice3" value="3499,90">
-    <input id="productNetPrice3" name="productNetPrice3" value="2845,45">
-    19
 
-    <input id="productAvatarUrl3" name="productAvatarUrl3"
-           value="https://image.ceneostatic.pl/data/products/85615932/i-apple-iphone-11- 64gb-czarny.jpg">
-    <input id="productCategory3" name="productCategory3" value="1001"> <input id="productVatRate3"
-                                                                              name="productVatRate3" value="1">
-    <input id="uniqueItemQuantity" name="uniqueItemQuantity" value="3"> <input id="totalValue" name="totalValue"
-                                                                               value="12209,26">
-    <input id="totalNetValue" name="totalNetValue" value="9926,22">
+    <input id="uniqueItemQuantity" name="uniqueItemQuantity" value="1">
+    <input id="totalValue" name="totalValue" value="2104,68">
+    <input id="totalNetValue" name="totalNetValue" value="1711,12">
   </form>
 </div>
 <script src="https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget.js"></script>
