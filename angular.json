@@ -29,12 +29,9 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss",
-              "https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget-styles.css"
+              "src/styles.scss"
             ],
             "scripts": [
-              "https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget.js",
-              "https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget-styles.css"
             ]
           },
           "configurations": {
