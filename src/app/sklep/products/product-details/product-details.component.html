@@ -1,5 +1,5 @@
 <div class="card">
-  <img [src]="product.image" alt="{{ product.name }}" class="card-img-top img-fluid">
+  <img [src]="product.image" alt="{{ product.name }}" class="card-img-top img-fluid" [ngStyle]="{maxWidth: '200px', maxHeight: '200px'}">
   <div class="card-body">
     <h3 class="card-title">
       {{ product.name }}
@@ -15,7 +15,7 @@
       </h5>
     </h3>
     <h4 class="mb-2">
-      {{product.price}} zł
+      {{product.net_value}} zł
     </h4>
     <h5>
       <p class="my-1">Zniżka: {{product.discount}} zł</p>

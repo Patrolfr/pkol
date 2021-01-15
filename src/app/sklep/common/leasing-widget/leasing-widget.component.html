@@ -1,0 +1,45 @@
+<div *ngIf="product">
+
+
+  <link href="https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget-styles.css"
+        rel="stylesheet"
+        type="text/css"/>
+  <p>asd</p>
+  <div style="margin-top: 30px">
+    <pkol-installment-widget
+      api_url="{{API_URL}}"
+      leasing_form_id="{{LEASING_FORM_ID}}"
+      shop_id="{{SHOP_ID}}"
+      total_net_value="{{product[0].net_value}}"
+      unique_item_quantity="{{product[0].product_quantity}}"
+      product_1_category_id="{{product[0].product_category}}"
+      product_1_quantity="{{product[0].product_quantity}}"
+      product_1_net_value="{{product[0].net_value}}"
+      widget_style="{{widget_style}}">
+    </pkol-installment-widget>
+  </div>
+
+  <div style="display: none;">
+    <form id="pko-leasing-form" method="POST">
+      <input id="returnLink" name="returnLink" value="https://morele.net">
+      <input id="shopName" name="shopName" value="X-Shop PW">
+      <input id="shopId" name="shopId" value="{{SHOP_ID}}">
+      <input id="orderId" name="orderId" value="2asf-2q34nvg-asd234">
+      <input id="source" name="source" value="{{source}}">
+
+      <input id="productName1" name="productName1" value="{{product[0].name}}">
+      <input id="productQuantity1" name="productQuantity1" value="{{product[0].product_quantity}}">
+      <input id="productPrice1" name="productPrice1" value="{{product[0].value}}">
+      <input id="productNetPrice1" name="productNetPrice1" value="{{product[0].net_value}}">
+      <input id="productAvatarUrl1" name="productAvatarUrl1"
+             value="https://image.ceneostatic.pl/data/products/39673391/i-samsung-galaxy-s6-edge-plus-g928f-64gb-czarny.jpg">
+      <input id="productCategory1" name="productCategory1" value="{{product[0].product_category}}">
+      <input id="productVatRate1" name="productVatRate1" value="{{product[0].product_vat_rate}}">
+
+      <input id="uniqueItemQuantity" name="uniqueItemQuantity" value="{{unique_product_quantity}}">
+      <input id="totalValue" name="totalValue" value="{{product[0].value}}">
+      <input id="totalNetValue" name="totalNetValue" value="{{product[0].net_value}}">
+    </form>
+  </div>
+
+</div>

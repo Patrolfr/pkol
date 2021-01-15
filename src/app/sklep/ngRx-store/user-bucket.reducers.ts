@@ -12,16 +12,16 @@ export class BucketEntry {
   }
 
   public formatInitialCost(): string {
-    return String(this.amount * this.product.price);
+    return String(this.amount * this.product.net_value);
   }
 
   public formatFinalCost(): string {
-    const finalCost = this.amount * (this.product.price - this.product.discount);
+    const finalCost = this.amount * (this.product.net_value - this.product.discount);
     return String(finalCost.toFixed(2));
   }
 
   public getTotalPrice(): number {
-    return this.amount * this.product.price;
+    return this.amount * this.product.net_value;
   }
 
   public getTotalDiscount(): number {

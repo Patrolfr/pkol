@@ -1,6 +1,8 @@
 <div class="col-lg-4 col-md-6 mb-4 d-inline-block">
   <div class="card">
-    <a [routerLink]="['/', 'product', product.id]" routerLinkActive="active"><img class="card-img-top" [src]="product.image" alt="{{product.name}}"></a>
+    <a [routerLink]="['/', 'product', product.id]" routerLinkActive="active">
+      <img class="card-img-top" [src]="product.image" alt="{{product.name}}" [ngStyle]="{maxWidth: '200px', maxHeight: '200px'}">
+    </a>
     <div class="card-body">
       <h5 class="card-title">
         <a class="black-text" [routerLink]="['/', 'product', product.id]" [textContent]="product.name"></a>
@@ -9,7 +11,7 @@
         <i class="fas fa-star" *ngFor="let star of stars"></i>
       </small>
       ({{votes}})
-      <h5 class="mt-1 mb-2">{{product.price}} zł</h5>
+      <h5 class="mt-1 mb-2">{{product.net_value}} zł</h5>
       <button
         class="btn btn-success btn-block"
         type="button"

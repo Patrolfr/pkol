@@ -19,7 +19,7 @@
           <td>{{ i + 1 }}</td>
           <td>{{ entry.product.name.slice(0, 28) }}</td>
           <td>{{ entry.amount }}</td>
-          <td>{{ (entry.amount * (entry.product.price - entry.product.discount)).toFixed(2) }}</td>
+          <td>{{ (entry.amount * (entry.product.net_value - entry.product.discount)).toFixed(2) }}</td>
         </tr>
         </tbody>
         <tfoot>

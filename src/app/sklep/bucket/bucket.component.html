@@ -17,7 +17,7 @@
         <img [src]="entry.product.image" alt="{{entry.product.name}}" class="img-fluid" style="max-height: 200px">
       </div>
     </div>
-    <h4>Cena: {{entry.product.price}} zł</h4>
+    <h4>Cena: {{entry.product.net_value}} zł</h4>
     <h4 *ngIf="entry.hasDiscount()">Zniżka na sztukę: {{entry.product.discount}} zł</h4>
     <h4>Sztuk: {{entry.amount}}</h4>
     <h4 *ngIf="entry.hasDiscount()">Zniżka: {{entry.getTotalDiscount()}} zł</h4>

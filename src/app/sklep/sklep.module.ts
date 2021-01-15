@@ -32,6 +32,7 @@ import {BucketEventsEmitter} from './service/bucket-events-emitter';
 import {ProductReviewComponent} from './products/product-review/product-review.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import { LeasingWidgetComponent } from './common/leasing-widget/leasing-widget.component';
 
 
 @NgModule({
@@ -50,9 +51,11 @@ import {MatMenuModule} from '@angular/material/menu';
     UserProfileComponent,
     OrderDetailsComponent,
     ProductReviewComponent,
+    LeasingWidgetComponent,
   ],
   exports: [
-    SklepComponent
+    SklepComponent,
+    LeasingWidgetComponent
   ],
   imports: [
     CommonModule,
