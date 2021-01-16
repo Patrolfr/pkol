@@ -10,7 +10,7 @@ export class LeasingWidgetComponent implements OnInit {
   API_URL = "https://stpc.pkoleasing.pl";
   LEASING_FORM_ID = "pko-leasing-form";
   SHOP_ID = "573278292"
-  @Input() product: Product[];
+  @Input() products: Product[];
   @Input() widget_style = "1";
   @Input() source = "item";
   unique_product_quantity = '1';

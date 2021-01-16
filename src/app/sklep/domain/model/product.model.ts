@@ -1,3 +1,4 @@
+
 export class Product {
   constructor(
     public id: number,
@@ -10,10 +11,16 @@ export class Product {
     public is_sponsored: boolean,
     public items_left: number,
     public expiration_timestamp: string,
-    public value: string,
+    public total_value: string,
     public product_category: string,
     public product_vat_rate: string,
     public product_quantity: string | undefined,
   ) {
+  }
+
+  public asSingletonArray(): Product[] {
+    const arr: Product[] = new Array();
+    arr.push(this);
+    return arr;
   }
 }
