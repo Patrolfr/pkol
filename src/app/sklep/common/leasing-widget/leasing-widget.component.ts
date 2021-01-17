@@ -15,10 +15,20 @@ export class LeasingWidgetComponent implements OnInit {
   @Input() source = "item";
   unique_product_quantity = '1';
   ifRenderFlag = false;
+  total_value = 0;
+  total_net_value = 0;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.unique_product_quantity = String(this.products.length);
+
+    for (const product of this.products) {
+      this.total_value += Number(product.total_value) * Number(product.product_quantity);
+      this.total_net_value = Number(product.net_value) * Number(product.product_quantity);
+    }
+
+    this.ifRenderFlag = true;
   }
 
 }

@@ -1,4 +1,4 @@
-<div *ngIf="products">
+<div *ngIf="ifRenderFlag">
 
 
   <link href="https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget-styles.css"
@@ -21,24 +21,29 @@
 
   <div style="display: none;">
     <form id="pko-leasing-form" method="POST">
+
       <input id="returnLink" name="returnLink" value="https://morele.net">
       <input id="shopName" name="shopName" value="X-Shop PW">
       <input id="shopId" name="shopId" value="{{SHOP_ID}}">
       <input id="orderId" name="orderId" value="2asf-2q34nvg-asd234">
       <input id="source" name="source" value="{{source}}">
-
-      <input id="productName1" name="productName1" value="{{products[0].name}}">
-      <input id="productQuantity1" name="productQuantity1" value="{{products[0].product_quantity}}">
-      <input id="productPrice1" name="productPrice1" value="{{products[0].total_value}}">
-      <input id="productNetPrice1" name="productNetPrice1" value="{{products[0].net_value}}">
-      <input id="productAvatarUrl1" name="productAvatarUrl1"
-             value="https://image.ceneostatic.pl/data/products/39673391/i-samsung-galaxy-s6-edge-plus-g928f-64gb-czarny.jpg">
-      <input id="productCategory1" name="productCategory1" value="{{products[0].product_category}}">
-      <input id="productVatRate1" name="productVatRate1" value="{{products[0].product_vat_rate}}">
-
+      <span *ngFor="let product of products; let i = index">
+        <input id="{{'productName' + (i+1)}}" name="{{'productName' + (i+1)}}" value="{{product.name}}">
+        <input id="{{'productQuantity' + (i+1)}}" name="{{'productQuantity' + (i+1)}}"
+               value="{{product.product_quantity}}">
+        <input id="productPrice1" name="{{'productPrice' + (i+1)}}" value="{{product.total_value}}">
+        <input id="{{'productNetPrice' + (i+1)}}" name="{{'productNetPrice' + (i+1)}}" value="{{product.net_value}}">
+        <input id="{{'productAvatarUrl' + (i+1)}}" name="{{'productAvatarUrl' + (i+1)}}"
+               value="{{product.image}}">
+        <input id="{{'productCategory' + (i+1)}}" name="{{'productCategory' + (i+1)}}"
+               value="{{product.product_category}}">
+        <input id="{{'productVatRate'}}" name="{{'productVatRate' + (i+1)}}" value="{{product.product_vat_rate}}">
+      </span>
       <input id="uniqueItemQuantity" name="uniqueItemQuantity" value="{{unique_product_quantity}}">
-      <input id="totalValue" name="totalValue" value="{{products[0].total_value}}">
-      <input id="totalNetValue" name="totalNetValue" value="{{products[0].net_value}}">
+      <input id="totalValue" name="totalValue" value="{{total_value}}">
+      <input id="totalNetValue" name="totalNetValue" value="{{total_net_value}}">
+
+
     </form>
   </div>
 
