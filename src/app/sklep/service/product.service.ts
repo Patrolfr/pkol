@@ -16,8 +16,6 @@ export class ProductService {
   }
 
   getProductBySubcategoryId(id: number): Product[] {
-    console.log(id);
-    console.log(this.allProducts);
     return this.allProducts.filter(it => it.subcategory === id);
   }
 

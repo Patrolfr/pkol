@@ -18,9 +18,4 @@ export class Product {
   ) {
   }
 
-  public asSingletonArray(): Product[] {
-    const arr: Product[] = new Array();
-    arr.push(this);
-    return arr;
-  }
 }

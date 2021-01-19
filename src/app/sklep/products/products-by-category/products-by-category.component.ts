@@ -17,7 +17,6 @@ export class ProductsByCategoryComponent implements OnInit {
 
   public category: Category;
   public productsOfCategory: Product[];
-  public productsChanged = new Subject<Product[]>();
 
   constructor(private route: ActivatedRoute,
               private dataService: DataMockService,
@@ -28,11 +27,11 @@ export class ProductsByCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.route.params
       .subscribe((params: Params) => {
+        console.log('ProductsByCategoryComponent init: ');
         const subcategoryId = Number(params.id); // handling so called type safety of Type Script..
         this.category = this.categoryService.getSubcategoryById(subcategoryId);
         this.productsOfCategory = this.productService.getProductBySubcategoryId(subcategoryId);
         console.log(this.productsOfCategory);
-        this.productsChanged.next(this.productsOfCategory);
       });
   }
 

@@ -23,6 +23,7 @@ export class ProductDetailsComponent implements OnInit {
   public reviews: Review[] = [];
   reviewForm: FormGroup;
   submitted = false;
+  showContent = false;
 
   constructor(private route: ActivatedRoute,
               public authenticationService: AuthenticationService,
@@ -31,9 +32,15 @@ export class ProductDetailsComponent implements OnInit {
               private store: Store,
               private emitter: BucketEventsEmitter,
               private formBuilder: FormBuilder) {
+    console.log('constructor: ');
+    console.log(this.product);
   }
 
   ngOnInit(): void {
+
+    setTimeout(() => this.showContent = true, 10000);
+
+    console.log(this.product);
     const defaultProductAmount = 1;
     this.inputForm = new FormGroup({
       productAmount: new FormControl(defaultProductAmount, Validators.pattern('^[1-9]+[0-9]*$')),
@@ -42,6 +49,8 @@ export class ProductDetailsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const productId = Number(params.id); // handling so called type safety of Type Script..
       this.product = this.productService.getProductById(productId);
+      console.log('subscribe');
+      console.log(this.product);
     });
 
     this.reviewService.getProductReviews(this.product.id).subscribe(data => {

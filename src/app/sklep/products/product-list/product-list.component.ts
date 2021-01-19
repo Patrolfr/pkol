@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Product} from '../../domain/model/product.model';
 import {Subject, Subscription} from 'rxjs';
 
@@ -9,22 +9,17 @@ import {Subject, Subscription} from 'rxjs';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
 
-  public products: Product[];
-  private subscription: Subscription;
-  @Input() productsChanged: Subject<Product[]>;
+  @Input() public products: Product[];
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.subscription = this.productsChanged.subscribe((products: Product[]) => {
-      this.products = products;
-      console.log(products);
-    });
+    console.log('ProductListComponent onInit:');
+
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
 }
