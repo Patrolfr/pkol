@@ -38,8 +38,6 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    setTimeout(() => this.showContent = true, 10000);
-
     console.log(this.product);
     const defaultProductAmount = 1;
     this.inputForm = new FormGroup({

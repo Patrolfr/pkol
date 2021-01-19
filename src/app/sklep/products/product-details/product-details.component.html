@@ -1,8 +1,6 @@
 <div class="card">
   <img [src]="product.image" alt="{{ product.name }}" class="card-img-top img-fluid" [ngStyle]="{maxWidth: '200px', maxHeight: '200px'}">
-  <div *ngIf="showContent">
     <app-leasing-widget [products]="[product]"></app-leasing-widget>
-  </div>
   <div class="card-body">
     <h3 class="card-title">
       {{ product.name }}
