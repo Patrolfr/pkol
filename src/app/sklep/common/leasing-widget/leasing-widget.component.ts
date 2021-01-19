@@ -27,14 +27,14 @@ export class LeasingWidgetComponent implements OnInit {
 
     for (const product of this.products) {
 
-      this.total_value += (+product.total_value * +product.product_quantity);
-      this.total_net_value += (+product.net_value * +product.product_quantity);
+      this.total_value += parseInt(product.total_value) * parseInt(product.product_quantity);
+      this.total_net_value += parseInt(product.net_value) * parseInt(product.product_quantity);
     }
 
 
     console.log("WIDGEEEEEET");
-    console.log(this.total_net_value);
     console.log(this.total_value);
+    console.log(this.total_net_value);
 
     this.ifRenderFlag = true;
   }
