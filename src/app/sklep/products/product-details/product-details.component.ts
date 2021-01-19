@@ -32,8 +32,6 @@ export class ProductDetailsComponent implements OnInit {
               private store: Store,
               private emitter: BucketEventsEmitter,
               private formBuilder: FormBuilder) {
-    console.log('constructor: ');
-    console.log(this.product);
   }
 
   ngOnInit(): void {
@@ -47,8 +45,6 @@ export class ProductDetailsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const productId = Number(params.id); // handling so called type safety of Type Script..
       this.product = this.productService.getProductById(productId);
-      console.log('subscribe');
-      console.log(this.product);
     });
 
     this.reviewService.getProductReviews(this.product.id).subscribe(data => {

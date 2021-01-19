@@ -2,11 +2,11 @@ import {Category} from '../domain/model/category.model';
 import {Product} from '../domain/model/product.model';
 
 const CATEGORY_1073 = '1073';
-const PRICE_NET_1 = '1711,12';
-const PRICE_TOTAL_1 = '2104,68';
-const VAT_RATE_1 = '2104,68';
-const PRICE_NET_2 = '1711,12';
-const PRICE_TOTAL_2 = '2104,68';
+const PRICE_NET_1 = '1711.12';
+const PRICE_TOTAL_1 = '2104.68';
+const VAT_RATE_1 = '3';
+const PRICE_NET_2 = '1711.12';
+const PRICE_TOTAL_2 = '2104.68';
 
 
 export class DataMockService {

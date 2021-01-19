@@ -16,7 +16,9 @@ export class LeasingWidgetComponent implements OnInit {
   unique_product_quantity = '1';
   ifRenderFlag = false;
   total_value = 0;
+  total_value_string = '';
   total_net_value = 0;
+  total_net_value_string = '';
 
   constructor() {
   }
@@ -27,14 +29,12 @@ export class LeasingWidgetComponent implements OnInit {
 
     for (const product of this.products) {
 
-      this.total_value += parseInt(product.total_value) * parseInt(product.product_quantity);
-      this.total_net_value += parseInt(product.net_value) * parseInt(product.product_quantity);
+      this.total_value += parseFloat(product.total_value.replace(',', '.')) * parseFloat(product.product_quantity);
+      this.total_net_value += parseFloat(product.net_value.replace(',', '.')) * parseFloat(product.product_quantity);
     }
 
-
-    console.log("WIDGEEEEEET");
-    console.log(this.total_value);
-    console.log(this.total_net_value);
+    this.total_value_string = ('' + this.total_value).replace('.', ',');
+    this.total_net_value_string = ('' + this.total_net_value).replace('.', ',');
 
     this.ifRenderFlag = true;
   }

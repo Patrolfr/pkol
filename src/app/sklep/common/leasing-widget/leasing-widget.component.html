@@ -1,4 +1,4 @@
-<div *ngIf="this.products">
+<div *ngIf="ifRenderFlag">
 
 
   <link href="https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget-styles.css"
@@ -15,9 +15,13 @@
       product_1_category_id="{{products[0].product_category}}"
       product_1_quantity="{{products[0].product_quantity}}"
       product_1_net_value="{{products[0].net_value}}"
-      widget_style="{{widget_style}}">
+      widget_style="{{widget_style}}"
+      avatar_url="{{products[0].image}}"
+
+    >
     </pkol-installment-widget>
   </div>
+
 
   <div style="display: none;">
     <form id="pko-leasing-form" method="POST">
@@ -29,19 +33,16 @@
       <input id="source" name="source" value="{{source}}">
       <span *ngFor="let product of products; let i = index">
         <input id="{{'productName' + (i+1)}}" name="{{'productName' + (i+1)}}" value="{{product.name}}">
-        <input id="{{'productQuantity' + (i+1)}}" name="{{'productQuantity' + (i+1)}}"
-               value="{{product.product_quantity}}">
-        <input id="productPrice1" name="{{'productPrice' + (i+1)}}" value="{{product.total_value}}">
-        <input id="{{'productNetPrice' + (i+1)}}" name="{{'productNetPrice' + (i+1)}}" value="{{product.net_value}}">
-        <input id="{{'productAvatarUrl' + (i+1)}}" name="{{'productAvatarUrl' + (i+1)}}"
-               value="{{product.image}}">
-        <input id="{{'productCategory' + (i+1)}}" name="{{'productCategory' + (i+1)}}"
-               value="{{product.product_category}}">
+        <input id="{{'productQuantity' + (i+1)}}" name="{{'productQuantity' + (i+1)}}" value="{{product.product_quantity}}">
+        <input id="{{'productPrice' + (i+1)}}" name="{{'productPrice' + (i+1)}}" value="{{total_value_string}}">
+        <input id="{{'productNetPrice' + (i+1)}}" name="{{'productNetPrice' + (i+1)}}" value="{{total_net_value_string}}">
+        <input id="{{'productAvatarUrl' + (i+1)}}" name="{{'productAvatarUrl' + (i+1)}}" value="https://image.ceneostatic.pl/data/products/82908101/i-roborock-s6-czarny.jpg">
+        <input id="{{'productCategory' + (i+1)}}" name="{{'productCategory' + (i+1)}}" value="{{product.product_category}}">
         <input id="{{'productVatRate'}}" name="{{'productVatRate' + (i+1)}}" value="{{product.product_vat_rate}}">
       </span>
       <input id="uniqueItemQuantity" name="uniqueItemQuantity" value="{{unique_product_quantity}}">
-      <input id="totalValue" name="totalValue" value="{{total_value}}">
-      <input id="totalNetValue" name="totalNetValue" value="{{total_net_value}}">
+      <input id="totalValue" name="totalValue" value="{{'' + total_value_string}}">
+      <input id="totalNetValue" name="totalNetValue" value="{{'' + total_net_value_string}}">
 
 
     </form>
