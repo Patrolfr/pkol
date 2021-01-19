@@ -24,6 +24,8 @@ export class LeasingWidgetComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('WIDGEEEET');
+    console.log(this.products);
 
     this.unique_product_quantity = String(this.products.length);
 

@@ -45,6 +45,8 @@ export class ProductDetailsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const productId = Number(params.id); // handling so called type safety of Type Script..
       this.product = this.productService.getProductById(productId);
+      console.log('this.product');
+      console.log(this.product);
     });
 
     this.reviewService.getProductReviews(this.product.id).subscribe(data => {

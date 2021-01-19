@@ -1,15 +1,14 @@
 <div *ngIf="ifRenderFlag">
 
-
   <link href="https://stpc.pkoleasing.pl/leasing/assets/widget/pkol-installment-widget-styles.css"
         rel="stylesheet"
         type="text/css"/>
   <p>-Widget pointer- \/</p>
   <div style="margin-top: 30px">
     <pkol-installment-widget
-      api_url="{{API_URL}}"
-      leasing_form_id="{{LEASING_FORM_ID}}"
-      shop_id="{{SHOP_ID}}"
+      api_url="https://stpc.pkoleasing.pl"
+      leasing_form_id="pko-leasing-form"
+      shop_id="573278292"
       total_net_value="{{products[0].net_value}}"
       unique_item_quantity="{{products[0].product_quantity}}"
       product_1_category_id="{{products[0].product_category}}"
@@ -17,7 +16,6 @@
       product_1_net_value="{{products[0].net_value}}"
       widget_style="{{widget_style}}"
       avatar_url="{{products[0].image}}"
-
     >
     </pkol-installment-widget>
   </div>
