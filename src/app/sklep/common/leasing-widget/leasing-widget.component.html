@@ -31,8 +31,8 @@
       <span *ngFor="let product of products; let i = index">
         <input id="{{'productName' + (i+1)}}" name="{{'productName' + (i+1)}}" value="{{product.name}}">
         <input id="{{'productQuantity' + (i+1)}}" name="{{'productQuantity' + (i+1)}}" value="{{product.product_quantity}}">
-        <input id="{{'productPrice' + (i+1)}}" name="{{'productPrice' + (i+1)}}" value="{{total_value_string}}">
-        <input id="{{'productNetPrice' + (i+1)}}" name="{{'productNetPrice' + (i+1)}}" value="{{total_net_value_string}}">
+        <input id="{{'productPrice' + (i+1)}}" name="{{'productPrice' + (i+1)}}" value="{{product.total_value}}">
+        <input id="{{'productNetPrice' + (i+1)}}" name="{{'productNetPrice' + (i+1)}}" value="{{product.net_value}}">
         <input id="{{'productAvatarUrl' + (i+1)}}" name="{{'productAvatarUrl' + (i+1)}}" value="https://image.ceneostatic.pl/data/products/82908101/i-roborock-s6-czarny.jpg">
         <input id="{{'productCategory' + (i+1)}}" name="{{'productCategory' + (i+1)}}" value="{{product.product_category}}">
         <input id="{{'productVatRate'}}" name="{{'productVatRate' + (i+1)}}" value="{{product.product_vat_rate}}">
